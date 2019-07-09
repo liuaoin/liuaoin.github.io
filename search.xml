@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[数据双向绑定]]></title>
+    <url>%2F2019%2F06%2F24%2Fvue%2F</url>
+    <content type="text"><![CDATA[Vue.js数据双向绑定 实现以下代码功能：12345678910 &lt;div id='app'&gt; &lt;input type="text" v-model="text"&gt; &#123;&#123;text&#125;&#125;&lt;/div&gt; var vm = new Vue(&#123; el: '#app', data: &#123; text: 'hello world' &#125;&#125;); 分成几部分实现： 输入框以及文本节点与data中的数据绑定; 输入框内容变化时，data中的数据同步变化，即view=&gt;model; data中的数据变化时，文本节点的内容同步变化,即model=&gt;view; DocumentFragment原理解析12345678910111213141516&lt;div id="app"&gt; &lt;input type="text" id="a"&gt; &lt;span id="b"&gt;&lt;/span&gt;&lt;/div&gt;&lt;script&gt; var dom = nodeToFragment(document.getElementById('app')); function nodeToFragment(node) &#123; var flag = document.createDocumentFragment(); var child; while(child = node.firstChild) &#123; flag.appendChild(child); &#125; return flag; &#125; document.getElementById('app').appendChild(dom);&lt;/script&gt; 数据初始化绑定1234567891011121314151617181920function compile(node,vm) &#123; var reg = /\&#123;\&#123;\(.*)\&#125;\&#125;/; if(node.nodeType === 1) &#123; var attr = node.attributes; for(var i = 0; i &lt; attr.length; i++) &#123; if(attr[i].nodeName == 'v-model') &#123; var name = attr[i].nodeValue; node.value = vm.data[name]; node.removeAttribute('v-model'); &#125; &#125; &#125; if(node.nodeType === 3) &#123; if(reg.test(node.nodeValue)) &#123; var name = RegExp.$1; name = name.trim(); node.nodeValue = vm.data[name]; &#125; &#125;&#125;]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F06%2F24%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
