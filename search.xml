@@ -7,6 +7,9 @@
       <categories>
         <category>vue.js</category>
       </categories>
+      <tags>
+        <tag>vue底层原理</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
