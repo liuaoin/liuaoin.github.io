@@ -288,6 +288,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/heightCollapse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/heightCollapse/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T17:14:37+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="高度塌陷"><a href="#高度塌陷" class="headerlink" title="高度塌陷"></a>高度塌陷</h2><h3 id="什么是高度塌陷？"><a href="#什么是高度塌陷？" class="headerlink" title="什么是高度塌陷？"></a>什么是高度塌陷？</h3><p>&emsp;&emsp;在文档流中，父元素的高度默认是被子元素撑开的，但是当为子元素设置为浮动后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，此时，父元素下的所有元素都会向上移动，这样将导致页面布局混乱。</p>
+<h3 id="怎么解决高度塌陷？"><a href="#怎么解决高度塌陷？" class="headerlink" title="怎么解决高度塌陷？"></a>怎么解决高度塌陷？</h3><ol>
+<li>将父元素的高度写死<br>&emsp;&emsp;当父元素的高度写死后，父元素便具有固定的高度，但父元素的高度将不能自动适应子元素的高度，所以这种方案一般不推荐使用。</li>
+<li>添加一个空白div<br>&emsp;&emsp;可以直接在高度塌陷的父元素的最后，添加一个空白的div，由于这个div并没有浮动，所以他是可以撑开父元素的高度的，然后再对其清除浮动，这样可以通过这个空白的div来撑开父元素的高度，基本没有副作用，虽然使用这种方式可以解决问题，但是会在页面中添加多余的结构。</li>
+<li>使用伪元素<br>&emsp;&emsp;在父元素内容的最后添加一个伪元素实现前一种方案的功能，此方法不会造成代码结构上的冗余。</li>
+<li><strong>开启父元素的BFC</strong>    <ul>
+<li>设置元素浮动：可以撑开父元素，但是会导致父元素的宽度丢失，而且会导致下边的元素上移，容易引发布局问题；</li>
+<li>设置元素绝对定位；</li>
+<li>设置元素为inline-block，会导致宽度丢失；</li>
+<li>将元素的overflow属性设置为一个非visible的值（推荐使用）；  </li>
+</ul>
+</li>
+</ol>
+<p>注意：在IE6以下的浏览器不支持BFC，但有另一个隐含的属性hasLayout，作用和BFC类似，可通过开启该属性解决，推荐使用zoom：1，此样式只在IE中支持；</p>
+<h3 id="BFC简介"><a href="#BFC简介" class="headerlink" title="BFC简介"></a>BFC简介</h3><p>&emsp;&emsp;BFC（Block Formatting Context）,即块的格式化环境，根据W3C的标准，页面中的元素都有一个隐含的属性叫做BFC，该属性可以设置打开或者关闭，默认是关闭的。  </p>
+<hr>
+<p>开启BFC后元素会具有如下特性：  </p>
+<ol>
+<li>父元素的垂直外边距不会和子元素重叠；  </li>
+<li>开启BFC的元素不会被浮动元素所覆盖；  </li>
+<li>开启BFC的元素可以包含浮动的子元素；  </li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/24/vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,138 +534,6 @@
 
 <h3 id="数据初始化绑定"><a href="#数据初始化绑定" class="headerlink" title="数据初始化绑定"></a>数据初始化绑定</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compile(<span class="type">node</span>,vm) &#123;</span><br><span class="line">	var reg = /\&#123;\&#123;\(.*)\&#125;\&#125;/;</span><br><span class="line">	<span class="keyword">if</span>(<span class="type">node</span>.nodeType === <span class="number">1</span>) &#123;</span><br><span class="line">		var attr = <span class="type">node</span>.attributes;</span><br><span class="line">		<span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; attr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(attr[i].nodeName == <span class="string">'v-model'</span>) &#123;</span><br><span class="line">				var<span class="built_in"> name</span> = attr[i].nodeValue;</span><br><span class="line">				<span class="type">node</span>.<span class="keyword">value</span> = vm.data<span class="built_in">[name</span>];</span><br><span class="line">				<span class="type">node</span>.removeAttribute(<span class="string">'v-model'</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="type">node</span>.nodeType === <span class="number">3</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(reg.test(<span class="type">node</span>.nodeValue)) &#123;</span><br><span class="line">			var<span class="built_in"> name</span> = RegExp.<span class="variable">$1</span>;</span><br><span class="line">		<span class="built_in">	name</span> =<span class="built_in"> name</span>.trim();</span><br><span class="line">			<span class="type">node</span>.nodeValue = vm.data<span class="built_in">[name</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/24/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T16:30:32+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
