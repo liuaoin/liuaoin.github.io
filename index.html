@@ -381,12 +381,13 @@
       
         
           
-            <h1 id="this浅析"><a href="#this浅析" class="headerlink" title="this浅析"></a>this浅析</h1><h3 id="什么是this？"><a href="#什么是this？" class="headerlink" title="什么是this？"></a>什么是this？</h3><p>&emsp;&emsp;this是 JavaScript 语言的一个关键字，它是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用，指代函数当前的运行环境，实际上是一个指针，指向调用函数的对象。  </p>
+            <h1 id="this浅析"><a href="#this浅析" class="headerlink" title="this浅析"></a>this浅析</h1><hr>
+<h3 id="什么是this？"><a href="#什么是this？" class="headerlink" title="什么是this？"></a>什么是this？</h3><p>&emsp;&emsp;this是 JavaScript 语言的一个关键字，它是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用，指代函数当前的运行环境，实际上是一个指针，指向调用函数的对象。  </p>
 <h3 id="this的绑定规则有哪些？"><a href="#this的绑定规则有哪些？" class="headerlink" title="this的绑定规则有哪些？"></a>this的绑定规则有哪些？</h3><ol>
 <li>默认绑定；  </li>
 <li>隐式绑定；  </li>
 <li>显示绑定；  </li>
-<li>new绑定；  <h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3></li>
+<li>new绑定；    <h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3></li>
 </ol>
 <p><strong>默认绑定</strong>：在没有运用其他绑定规则时，即为默认绑定，非严格模式下，this指向全局对象，严格模式下，this指向undefined，undefined上没有this对象，会抛出错误。<br><strong>隐式绑定</strong>：绑定到某个对象上，形式为xxx.fun()。<br>注意：若采用对象属性链的方式调用函数，只有最后一层会影响到调用位置，隐式绑定容易发生丢失的情况。<br><strong>显示绑定</strong>：通过call, apply, bind的方式，显示地指定this所指向的对象。<br><strong>new绑定</strong>：会创建一个新对象，并将this指向这个新的对象。</p>
 <h3 id="绑定优先级："><a href="#绑定优先级：" class="headerlink" title="绑定优先级："></a>绑定优先级：</h3><p>&emsp;&emsp;当同时应用了多种绑定规则时，按以下优先级应用:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定。  </p>
@@ -535,7 +536,8 @@
       
         
           
-            <h1 id="高度塌陷"><a href="#高度塌陷" class="headerlink" title="高度塌陷"></a>高度塌陷</h1><h3 id="什么是高度塌陷？"><a href="#什么是高度塌陷？" class="headerlink" title="什么是高度塌陷？"></a>什么是高度塌陷？</h3><p>&emsp;&emsp;在文档流中，父元素的高度默认是被子元素撑开的，但是当为子元素设置为浮动后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，此时，父元素下的所有元素都会向上移动，这样将导致页面布局混乱。</p>
+            <h1 id="高度塌陷"><a href="#高度塌陷" class="headerlink" title="高度塌陷"></a>高度塌陷</h1><hr>
+<h3 id="什么是高度塌陷？"><a href="#什么是高度塌陷？" class="headerlink" title="什么是高度塌陷？"></a>什么是高度塌陷？</h3><p>&emsp;&emsp;在文档流中，父元素的高度默认是被子元素撑开的，但是当为子元素设置为浮动后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，此时，父元素下的所有元素都会向上移动，这样将导致页面布局混乱。</p>
 <h3 id="怎么解决高度塌陷？"><a href="#怎么解决高度塌陷？" class="headerlink" title="怎么解决高度塌陷？"></a>怎么解决高度塌陷？</h3><ol>
 <li>将父元素的高度写死<br>&emsp;&emsp;当父元素的高度写死后，父元素便具有固定的高度，但父元素的高度将不能自动适应子元素的高度，所以这种方案一般不推荐使用。</li>
 <li>添加一个空白div<br>&emsp;&emsp;可以直接在高度塌陷的父元素的最后，添加一个空白的div，由于这个div并没有浮动，所以他是可以撑开父元素的高度的，然后再对其清除浮动，这样可以通过这个空白的div来撑开父元素的高度，基本没有副作用，虽然使用这种方式可以解决问题，但是会在页面中添加多余的结构。</li>
@@ -549,9 +551,7 @@
 </li>
 </ol>
 <p>注意：在IE6以下的浏览器不支持BFC，但有另一个隐含的属性hasLayout，作用和BFC类似，可通过开启该属性解决，推荐使用zoom：1，此样式只在IE中支持；</p>
-<h3 id="BFC简介"><a href="#BFC简介" class="headerlink" title="BFC简介"></a>BFC简介</h3><p>&emsp;&emsp;BFC（Block Formatting Context）,即块的格式化环境，根据W3C的标准，页面中的元素都有一个隐含的属性叫做BFC，该属性可以设置打开或者关闭，默认是关闭的。  </p>
-<hr>
-<p>开启BFC后元素会具有如下特性：  </p>
+<h3 id="BFC简介"><a href="#BFC简介" class="headerlink" title="BFC简介"></a>BFC简介</h3><p>&emsp;&emsp;BFC（Block Formatting Context）,即块的格式化环境，根据W3C的标准，页面中的元素都有一个隐含的属性叫做BFC，该属性可以设置打开或者关闭，默认是关闭的。<br>开启BFC后元素会具有如下特性：  </p>
 <ol>
 <li>父元素的垂直外边距不会和子元素重叠；  </li>
 <li>开启BFC的元素不会被浮动元素所覆盖；  </li>
@@ -699,9 +699,9 @@
         
           
             <h1 id="Vue-js数据双向绑定"><a href="#Vue-js数据双向绑定" class="headerlink" title="Vue.js数据双向绑定"></a>Vue.js数据双向绑定</h1><hr>
-<h4 id="实现以下代码功能："><a href="#实现以下代码功能：" class="headerlink" title="实现以下代码功能："></a>实现以下代码功能：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div id=<span class="string">'app'</span>&gt;</span><br><span class="line">       &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"text"</span>&gt;</span><br><span class="line">    &#123;&#123;text&#125;&#125;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">   var vm = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">	el: '#app',</span></span><br><span class="line"><span class="regexp">	data: &#123;</span></span><br><span class="line"><span class="regexp">		text: 'hello world'</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="实现以下代码功能："><a href="#实现以下代码功能：" class="headerlink" title="实现以下代码功能："></a>实现以下代码功能：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div id=<span class="string">'app'</span>&gt;</span><br><span class="line">       &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"text"</span>&gt;</span><br><span class="line">    &#123;&#123;text&#125;&#125;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">   var vm = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">	el: '#app',</span></span><br><span class="line"><span class="regexp">	data: &#123;</span></span><br><span class="line"><span class="regexp">		text: 'hello world'</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="分成几部分实现："><a href="#分成几部分实现：" class="headerlink" title="分成几部分实现："></a>分成几部分实现：</h4><ol>
+<h3 id="分成几部分实现："><a href="#分成几部分实现：" class="headerlink" title="分成几部分实现："></a>分成几部分实现：</h3><ol>
 <li>输入框以及文本节点与data中的数据绑定;</li>
 <li>输入框内容变化时，data中的数据同步变化，即view=&gt;model;</li>
 <li>data中的数据变化时，文本节点的内容同步变化,即model=&gt;view;</li>
