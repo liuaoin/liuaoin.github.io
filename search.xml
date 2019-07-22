@@ -17,6 +17,14 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[HTML5新特性]]></title>
+    <url>%2F2019%2F07%2F10%2Fhtml5%2F</url>
+    <content type="text"><![CDATA[HTML5新特性 HTML十大新特性 语义化标签&emsp;&emsp;语义化标签使页面的内容结构化，易理解； 增强型表单&emsp;&emsp;提供了多种新的表单输入类型以及一些表单元素和表单属性，可以更好的对输入内容进行控制和验证； 视频和音频&emsp;&emsp;使用&lt;video&gt;元素提供播放视频文件的标准，使用&lt;audio&gt;元素提供播放音频文件的标准； Canvas绘图&emsp;&emsp;使用JavaScript绘制图像，通过&lt;canvas&gt;元素呈现； SVG绘图&emsp;&emsp;使用XML进行绘图，每个被绘制的图形均被视为对象； 地理定位&emsp;&emsp;Geolocation用于定位用户的位置； 拖放API Web Worker&emsp;&emsp;当在HTML页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。而web worker是运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能。 Web Storage&emsp;&emsp;Web Storage的目的是为了克服由cookie带来的一些限制，当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。主要目的是提供一种在cookie之外存储会话数据的途径和一种存储大量可以跨会话存在的数据的机制。&emsp;&emsp;Web Storage分为两种：sessionStorage 和localStorage ，sessionStorage将数据保存在session中，浏览器关闭即消失，而localStorage则一直将数据保存在客户端本地。 WebSocket&emsp;&emsp;WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[数据双向绑定]]></title>
     <url>%2F2019%2F06%2F24%2Fvue%2F</url>
     <content type="text"><![CDATA[Vue.js数据双向绑定 实现以下代码功能：12345678910 &lt;div id='app'&gt; &lt;input type="text" v-model="text"&gt; &#123;&#123;text&#125;&#125;&lt;/div&gt; var vm = new Vue(&#123; el: '#app', data: &#123; text: 'hello world' &#125;&#125;); 分成几部分实现： 输入框以及文本节点与data中的数据绑定; 输入框内容变化时，data中的数据同步变化，即view=&gt;model; data中的数据变化时，文本节点的内容同步变化,即model=&gt;view; DocumentFragment原理解析12345678910111213141516&lt;div id="app"&gt; &lt;input type="text" id="a"&gt; &lt;span id="b"&gt;&lt;/span&gt;&lt;/div&gt;&lt;script&gt; var dom = nodeToFragment(document.getElementById('app')); function nodeToFragment(node) &#123; var flag = document.createDocumentFragment(); var child; while(child = node.firstChild) &#123; flag.appendChild(child); &#125; return flag; &#125; document.getElementById('app').appendChild(dom);&lt;/script&gt; 数据初始化绑定1234567891011121314151617181920function compile(node,vm) &#123; var reg = /\&#123;\&#123;\(.*)\&#125;\&#125;/; if(node.nodeType === 1) &#123; var attr = node.attributes; for(var i = 0; i &lt; attr.length; i++) &#123; if(attr[i].nodeName == 'v-model') &#123; var name = attr[i].nodeValue; node.value = vm.data[name]; node.removeAttribute('v-model'); &#125; &#125; &#125; if(node.nodeType === 3) &#123; if(reg.test(node.nodeValue)) &#123; var name = RegExp.$1; name = name.trim(); node.nodeValue = vm.data[name]; &#125; &#125;&#125;]]></content>

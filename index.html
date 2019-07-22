@@ -387,7 +387,7 @@
 <li>默认绑定；  </li>
 <li>隐式绑定；  </li>
 <li>显示绑定；  </li>
-<li>new绑定；    <h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3></li>
+<li>new绑定；  <h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3></li>
 </ol>
 <p><strong>默认绑定</strong>：在没有运用其他绑定规则时，即为默认绑定，非严格模式下，this指向全局对象，严格模式下，this指向undefined，undefined上没有this对象，会抛出错误。<br><strong>隐式绑定</strong>：绑定到某个对象上，形式为xxx.fun()。<br>注意：若采用对象属性链的方式调用函数，只有最后一层会影响到调用位置，隐式绑定容易发生丢失的情况。<br><strong>显示绑定</strong>：通过call, apply, bind的方式，显示地指定this所指向的对象。<br><strong>new绑定</strong>：会创建一个新对象，并将this指向这个新的对象。</p>
 <h3 id="绑定优先级："><a href="#绑定优先级：" class="headerlink" title="绑定优先级："></a>绑定优先级：</h3><p>&emsp;&emsp;当同时应用了多种绑定规则时，按以下优先级应用:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定。  </p>
@@ -556,6 +556,160 @@
 <li>父元素的垂直外边距不会和子元素重叠；  </li>
 <li>开启BFC的元素不会被浮动元素所覆盖；  </li>
 <li>开启BFC的元素可以包含浮动的子元素；  </li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/html5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/10/html5/" itemprop="url">HTML5新特性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T00:00:00+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h1><hr>
+<h3 id="HTML十大新特性"><a href="#HTML十大新特性" class="headerlink" title="HTML十大新特性"></a>HTML十大新特性</h3><ol>
+<li>语义化标签<br>&emsp;&emsp;语义化标签使页面的内容结构化，易理解；</li>
+<li>增强型表单<br>&emsp;&emsp;提供了多种新的表单输入类型以及一些表单元素和表单属性，可以更好的对输入内容进行控制和验证；</li>
+<li>视频和音频<br>&emsp;&emsp;使用&lt;video&gt;元素提供播放视频文件的标准，使用&lt;audio&gt;元素提供播放音频文件的标准；</li>
+<li>Canvas绘图<br>&emsp;&emsp;使用JavaScript绘制图像，通过&lt;canvas&gt;元素呈现；</li>
+<li>SVG绘图<br>&emsp;&emsp;使用XML进行绘图，每个被绘制的图形均被视为对象；</li>
+<li>地理定位<br>&emsp;&emsp;Geolocation用于定位用户的位置；</li>
+<li>拖放API  </li>
+<li>Web Worker<br>&emsp;&emsp;当在HTML页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。而web worker是运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能。</li>
+<li>Web Storage<br>&emsp;&emsp;Web Storage的目的是为了克服由cookie带来的一些限制，当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。主要目的是提供一种在cookie之外存储会话数据的途径和一种存储大量可以跨会话存在的数据的机制。<br>&emsp;&emsp;Web Storage分为两种：sessionStorage 和localStorage ，sessionStorage将数据保存在session中，浏览器关闭即消失，而localStorage则一直将数据保存在客户端本地。</li>
+<li>WebSocket<br>&emsp;&emsp;WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。</li>
 </ol>
 
           
@@ -793,7 +947,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -804,7 +958,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
