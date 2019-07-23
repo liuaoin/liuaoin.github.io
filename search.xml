@@ -7,6 +7,9 @@
       <categories>
         <category>JavaScript</category>
       </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[高度塌陷]]></title>
@@ -15,6 +18,9 @@
       <categories>
         <category>CSS</category>
       </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[HTML5新特性]]></title>
@@ -23,6 +29,20 @@
       <categories>
         <category>HTML</category>
       </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript数据类型及判断]]></title>
+    <url>%2F2019%2F06%2F30%2Fvariable%2F</url>
+    <content type="text"><![CDATA[JavaScript数据类型及判断 JS数据类型&emsp;&emsp;六大基本数据类型：NULL, Undefined, Boolean, String, Number, Symbol（ES6新增）。&emsp;&emsp;三大引用类型：Object, Array, Function。 JS变量类型判断let num = 123; let str = &apos;abc&apos;; let bool = true; let arr = [1,2,3]; let json = {&quot;name&quot;: &quot;jack&quot;, &quot;age&quot;: 25}; let und = undefined; let nul = null; let date = new Date(); let reg = /^[a-z]$/; let error = new Error(); let fun = console.log; let sym = Symbol(&apos;foo&apos;); 使用typeof检测&emsp;&emsp;typeof只能检测出string, number, boolean, function, undefined，其他类型的数据检测结果均为object，不能区分。 typeof num =&gt; &quot;number&quot; typeof str =&gt; &quot;string&quot; typeof boolean =&gt; &quot;boolean&quot; typeof arr =&gt; &quot;object&quot; typeof json =&gt; &quot;object&quot; typeof und =&gt; &quot;undefined&quot; typeof nul =&gt; &quot;object&quot; typeof date =&gt; &quot;object&quot; typeof reg =&gt; &quot;object&quot; typeof error =&gt; &quot;object&quot; typeof fun =&gt; &quot;function&quot; typeof sym =&gt; &quot;symbol&quot; 使用instanceof检测&emsp;&emsp;通过判断参照对象的prototype属性所指向的对象是否在被检测对象的原型链上进行检测，此方法对null和undefined检测为object，因为js中没有这种全局类型，另外，此方法有一个弊端，对于number, string, boolean这三种类型，只有通过构造函数定义的才能被检测出，如let num = new Number(1)，而这种let num = 1则不能被检测出。 num instanceof Number =&gt; false str instanceof String =&gt; false bool instanceof Boolean =&gt; false arr instanceof Array =&gt; true json instanceof Object =&gt; true und instanceof Object =&gt; false nul instaceof Object =&gt; false date instanceof Object =&gt; true reg instanceof Object =&gt; true error instanceof Object =&gt; true fun instanceof Function =&gt; true sym instanceof Symbol =&gt; false 使用constructor检测&emsp;&emsp;constructor是原型对象的属性指向构造函数，这种方式解决了instanceof的弊端，但对于undefined和null仍有缺陷，而且constructor指向的构造函数是可以被修改的。 num.constructor == Number =&gt; true str.constructor == String =&gt; true bool.constructor == Boolean =&gt; true arr.constructor == Array =&gt; true json.constructor == Object =&gt; true und.constructor == Undefined =&gt; true unl.constructor == Null =&gt; true date.constructor == Date =&gt; true reg.constructor == RegExp =&gt; true error.constructor == Error =&gt; true fun.constructor == Function =&gt; true sym.constructor == Symbol =&gt; true 使用Object.prototype.toString.call检测&emsp;&emsp;通过取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于“[object Array]“的字符串作为结果（[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call，可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较即可，此方法可以检测出所有的变量类型。 Object.prototype.toString.call(num) =&gt; &quot;[object Number]&quot; Object.prototype.toString.call(str) =&gt; &quot;[object String]&quot; Object.prototype.toString.call(bool) =&gt; &quot;[object Boolean]&quot; Object.prototype.toString.call(arr) =&gt; &quot;[object Array]&quot; Object.prototype.toString.call(json) =&gt; &quot;[object Object]&quot; Object.prototype.toString.call(nul) =&gt; &quot;[object Null]&quot; Object.prototype.toString.call(und) =&gt; &quot;[object Undefined]&quot; Object.prototype.toString.call(date) =&gt; &quot;[object Date]&quot; Object.prototype.toString.call(reg) =&gt; &quot;[object RegExp]&quot; Object.prototype.toString.call(error) =&gt; &quot;[object Error]&quot; Object.prototype.toString.call(fun) =&gt; &quot;[object Function]&quot; Object.prototype.toString.call(sym) =&gt; &quot;[object Symbol]&quot; 使用jquery中的$.type检测&emsp;&emsp;此方法是基于ES5的Object.prototype.toString.call进一步封装，可以检测出所有的变量类型。 $.type(num) =&gt; &quot;number&quot; $.type(str) =&gt; &quot;string&quot; $.type(bool) =&gt; &quot;boolean&quot; $.type(arr) =&gt; &quot;array&quot; $.type(json) =&gt; &quot;object&quot; $.type(und) =&gt; &quot;undefined&quot; $.type(nul) =&gt; &quot;null&quot; $.type(date) =&gt; &quot;date&quot; $.type(reg) =&gt; &quot;regexp&quot; $.type(error) =&gt; &quot;error&quot; $.type(fun) =&gt; &quot;function&quot; $.type(sym) =&gt; &quot;symbol&quot;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[数据双向绑定]]></title>
