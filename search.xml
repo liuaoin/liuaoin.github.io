@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Http简介]]></title>
+    <url>%2F2019%2F07%2F26%2Fhttp%2F</url>
+    <content type="text"><![CDATA[HTTP（超文本传输协议） HTTP协议的主要特点 简单快速：客户端向服务器请求服务时，只需传送请求方法和路径。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。 灵活：HTTP允许传输任意类型的数据对象，传输的类型由Content-Type加以标记。 无连接：HTTP使用了TCP连接，通信的双方在交换HTTP报文之前不需要先建立HTTP连接。 无状态：对于同一个客户第二次访问同一个服务器上的页面时，服务器的响应与第一次被访问时的相同，服务器不保留与客户端连接时的任何状态，这种无状态特性简化了服务器的设计。HTTP协议的工作流程 客户端与服务器建立连接； 客户端向服务器发送请求； 服务器接接收请求，返回相应的响应报文； 客户端与服务器关闭连接；HTTP的URL 对于万维网的网点的访问要使用HTTP协议，通过URL去定位资源的位置。 HTTP的URL一般形式是：http://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt; HTTP的默认端口号是80，通常可以省略，URL中的字母不区分大小写。HTTP报文结构&emsp;&emsp;HTTP有两类报文，请求报文和响应报文，都是由三个部分组成，区别在于开始行不同。 开始行：用于区分是请求报文还是响应报文。在请求报文中的开始行叫做请求行，而在响应报文中的开始行叫做状态行。开始行由三个字段组成，之间以空格分隔开。首部行：用来说明浏览器、服务器或报文主体的一些信息。整个首部行结束时，还有一个空行将首部行和后面的实体主体分开。实体主体：一般不使用此字段。请求报文：请求报文的请求行有三个内容，即方法、请求资源的URL和HTTP的版本。请求方法： GET：请求读取由URL所标志的信息； POST：给服务器添加信息； HEAD：请求读取由URL所标志的信息的首部； PUT：在指明的URL下存储一个稳定； DELETE：删除指明的URL所标志的资源； TRACE：用来进行环回测试的请求报文； CONNECT：用于代理服务器； OPTION：请求一些选项的信息；一个完整的HTTP请求报文示例：GET /dir/index.html HTTP/1.1&emsp;&emsp;开始行：使用了相对URLHost: www.xyz.edu.cn&emsp;&emsp;（首部行开始）给出了主机的域名Connection: close&emsp;&emsp;告诉浏览器发送完请求的文档后就可以释放连接User-Agent: Mozilla/5.0&emsp;&emsp;表明用户代理使用的是 FirefoxAccept-Language: cn&emsp;&emsp;表示用户希望优先得到中文版本的文档（首部行结束）（空行） 响应报文：响应报文的状态行有三个内容，即HTTP版本、状态码以及解释状态码的简单短语。状态码：状态码都是三位数的，分为5大类，分别以数字1~5开头。 1xx：表示通知信息，如收到请求或正在进行处理。 2xx：表示成功，如接受或知道了。 3xx：表示重定向，如要完成请求须采取进一步的行动。 4xx：表示客户端出错，如请求中有错误的语法或不能完成。 5xx：表示服务器差错，如服务器失效无法完成请求。 一个响应报文示例：HTTP/1.1 202 Accepted HTTP持久连接（从HTTP1.1开始支持）非持久连接：HTTP协议采用“请求–应答”模式，当使用普通模式，即非Keep-Alive（持久连接）模式时，每个请求/应答客户端和服务器都要新建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）；持久连接：当使用Keep-Alive模式（持久连接、连接重用）时，Keep-Alive功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive 功能避免了重新建立连接。 Get与Post区别Get和Post是Http协议中的两种发送请求的方法，而Http是基于TCP/IP的关于数据如何在万维网中通信的协议，Get和Post本质上就是TCP连接，并无差别。 Get在浏览器回退时是无害的，而Post会再次提交请求； Get产生的URL地址可以被Bookmark，而Post不可以； Get请求会被浏览器主动cache，而Post不会； Get请求只能进行url编码，而Post支持多种编码方式； Get请求参数会被完整保留在浏览器历史记录中，而Post中的参数不会被保留； Get请求在URL中传送的参数是有长度限制的，而Post没有； 对参数的数据类型，Get只接受ASCII字符，而Post没有限制； Get比Post更不安全，参数直接暴露在URL上，不能用来传递敏感信息； Get参数通过URL传递，Post放在Request body中； Get产生一个TCP数据包，Post产生两个TCP数据包。对于Get方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；而对于Post，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）；HTTP请求头内容 使用的HTTP动作：post/get； 浏览器所能接受的Content-type：Accept； 浏览器所能接受的语言和编码信息Accept-language，Accept-Encoding； 本机信息：浏览器类型、操作系统类型User-Agent； 请求的主机和端口Host； 使用的连接方式Connnection； Http/1.1 ，1.1为协议的版本，使用持久连接，1.0使用非持久连接； Cookie；]]></content>
+      <categories>
+        <category>Http</category>
+      </categories>
+      <tags>
+        <tag>Http</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[this浅析]]></title>
     <url>%2F2019%2F07%2F19%2Fthis%2F</url>
     <content type="text"><![CDATA[this浅析 什么是this？&emsp;&emsp;this是 JavaScript 语言的一个关键字，它是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用，指代函数当前的运行环境，实际上是一个指针，指向调用函数的对象。 this的绑定规则有哪些？ 默认绑定； 隐式绑定； 显示绑定； new绑定； this绑定规则详解： 默认绑定：在没有运用其他绑定规则时，即为默认绑定，非严格模式下，this指向全局对象，严格模式下，this指向undefined，undefined上没有this对象，会抛出错误。隐式绑定：绑定到某个对象上，形式为xxx.fun()。注意：若采用对象属性链的方式调用函数，只有最后一层会影响到调用位置，隐式绑定容易发生丢失的情况。显示绑定：通过call, apply, bind的方式，显示地指定this所指向的对象。new绑定：会创建一个新对象，并将this指向这个新的对象。 绑定优先级：&emsp;&emsp;当同时应用了多种绑定规则时，按以下优先级应用:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定。 其他情况： 当将null或者是undefined作为this的绑定对象传入call、apply或者bind，这些值在调用时会被忽略，实际应用的是默认绑定规则。 箭头函数没有this，因此无法用call()、apply()、bind()这些方法去改变this的指向，它的this继承于外层代码库中的this。]]></content>
