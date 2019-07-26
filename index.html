@@ -386,18 +386,20 @@
 <li>简单快速：客户端向服务器请求服务时，只需传送请求方法和路径。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
 <li>灵活：HTTP允许传输任意类型的数据对象，传输的类型由Content-Type加以标记。</li>
 <li>无连接：HTTP使用了TCP连接，通信的双方在交换HTTP报文之前不需要先建立HTTP连接。</li>
-<li>无状态：对于同一个客户第二次访问同一个服务器上的页面时，服务器的响应与第一次被访问时的相同，服务器不保留与客户端连接时的任何状态，这种无状态特性简化了服务器的设计。<h3 id="HTTP协议的工作流程"><a href="#HTTP协议的工作流程" class="headerlink" title="HTTP协议的工作流程"></a>HTTP协议的工作流程</h3></li>
+<li>无状态：对于同一个客户第二次访问同一个服务器上的页面时，服务器的响应与第一次被访问时的相同，服务器不保留与客户端连接时的任何状态，这种无状态特性简化了服务器的设计。</li>
+</ol>
+<h3 id="HTTP协议的工作流程"><a href="#HTTP协议的工作流程" class="headerlink" title="HTTP协议的工作流程"></a>HTTP协议的工作流程</h3><ol>
 <li>客户端与服务器建立连接；</li>
 <li>客户端向服务器发送请求；</li>
 <li>服务器接接收请求，返回相应的响应报文；</li>
-<li>客户端与服务器关闭连接；<h3 id="HTTP的URL"><a href="#HTTP的URL" class="headerlink" title="HTTP的URL"></a>HTTP的URL</h3></li>
+<li>客户端与服务器关闭连接；</li>
 </ol>
-<ul>
+<h3 id="HTTP的URL"><a href="#HTTP的URL" class="headerlink" title="HTTP的URL"></a>HTTP的URL</h3><ul>
 <li>对于万维网的网点的访问要使用HTTP协议，通过URL去定位资源的位置。  </li>
 <li>HTTP的URL一般形式是：http://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</li>
-<li>HTTP的默认端口号是80，通常可以省略，URL中的字母不区分大小写。<h3 id="HTTP报文结构"><a href="#HTTP报文结构" class="headerlink" title="HTTP报文结构"></a>HTTP报文结构</h3>&emsp;&emsp;HTTP有两类报文，请求报文和响应报文，都是由三个部分组成，区别在于开始行不同。<br>  </li>
+<li>HTTP的默认端口号是80，通常可以省略，URL中的字母不区分大小写。</li>
 </ul>
-<p><strong>开始行：</strong>用于区分是请求报文还是响应报文。在请求报文中的开始行叫做请求行，而在响应报文中的开始行叫做状态行。开始行由三个字段组成，之间以空格分隔开。<br><strong>首部行：</strong>用来说明浏览器、服务器或报文主体的一些信息。整个首部行结束时，还有一个空行将首部行和后面的实体主体分开。<br><strong>实体主体：</strong>一般不使用此字段。<br><br><strong>请求报文：</strong>请求报文的请求行有三个内容，即方法、请求资源的URL和HTTP的版本。<br>请求方法：  </p>
+<h3 id="HTTP报文结构"><a href="#HTTP报文结构" class="headerlink" title="HTTP报文结构"></a>HTTP报文结构</h3><p>&emsp;&emsp;HTTP有两类报文，请求报文和响应报文，都是由三个部分组成，区别在于开始行不同。<br><br><strong>开始行：</strong>用于区分是请求报文还是响应报文。在请求报文中的开始行叫做请求行，而在响应报文中的开始行叫做状态行。开始行由三个字段组成，之间以空格分隔开。<br><strong>首部行：</strong>用来说明浏览器、服务器或报文主体的一些信息。整个首部行结束时，还有一个空行将首部行和后面的实体主体分开。<br><strong>实体主体：</strong>一般不使用此字段。<br><br><strong>请求报文：</strong>请求报文的请求行有三个内容，即方法、请求资源的URL和HTTP的版本。<br>请求方法：  </p>
 <ul>
 <li>GET：请求读取由URL所标志的信息；</li>
 <li>POST：给服务器添加信息；</li>
@@ -429,7 +431,9 @@
 <li>对参数的数据类型，Get只接受ASCII字符，而Post没有限制；  </li>
 <li>Get比Post更不安全，参数直接暴露在URL上，不能用来传递敏感信息；  </li>
 <li>Get参数通过URL传递，Post放在Request body中；  </li>
-<li>Get产生一个TCP数据包，Post产生两个TCP数据包。对于Get方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；而对于Post，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）；<h3 id="HTTP请求头内容"><a href="#HTTP请求头内容" class="headerlink" title="HTTP请求头内容"></a>HTTP请求头内容</h3></li>
+<li>Get产生一个TCP数据包，Post产生两个TCP数据包。对于Get方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；而对于Post，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）；</li>
+</ol>
+<h3 id="HTTP请求头内容"><a href="#HTTP请求头内容" class="headerlink" title="HTTP请求头内容"></a>HTTP请求头内容</h3><ol>
 <li>使用的HTTP动作：post/get；  </li>
 <li>浏览器所能接受的Content-type：Accept；</li>
 <li>浏览器所能接受的语言和编码信息Accept-language，Accept-Encoding；</li>
@@ -586,9 +590,9 @@
 <li>默认绑定；  </li>
 <li>隐式绑定；  </li>
 <li>显示绑定；  </li>
-<li>new绑定；  <h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3></li>
+<li>new绑定；  </li>
 </ol>
-<p><strong>默认绑定</strong>：在没有运用其他绑定规则时，即为默认绑定，非严格模式下，this指向全局对象，严格模式下，this指向undefined，undefined上没有this对象，会抛出错误。<br><strong>隐式绑定</strong>：绑定到某个对象上，形式为xxx.fun()。<br>注意：若采用对象属性链的方式调用函数，只有最后一层会影响到调用位置，隐式绑定容易发生丢失的情况。<br><strong>显示绑定</strong>：通过call, apply, bind的方式，显示地指定this所指向的对象。<br><strong>new绑定</strong>：会创建一个新对象，并将this指向这个新的对象。</p>
+<h3 id="this绑定规则详解："><a href="#this绑定规则详解：" class="headerlink" title="this绑定规则详解："></a>this绑定规则详解：</h3><p><strong>默认绑定</strong>：在没有运用其他绑定规则时，即为默认绑定，非严格模式下，this指向全局对象，严格模式下，this指向undefined，undefined上没有this对象，会抛出错误。<br><strong>隐式绑定</strong>：绑定到某个对象上，形式为xxx.fun()。<br>注意：若采用对象属性链的方式调用函数，只有最后一层会影响到调用位置，隐式绑定容易发生丢失的情况。<br><strong>显示绑定</strong>：通过call, apply, bind的方式，显示地指定this所指向的对象。<br><strong>new绑定</strong>：会创建一个新对象，并将this指向这个新的对象。</p>
 <h3 id="绑定优先级："><a href="#绑定优先级：" class="headerlink" title="绑定优先级："></a>绑定优先级：</h3><p>&emsp;&emsp;当同时应用了多种绑定规则时，按以下优先级应用:new绑定&gt;显示绑定&gt;隐式绑定&gt;默认绑定。  </p>
 <h3 id="其他情况："><a href="#其他情况：" class="headerlink" title="其他情况："></a>其他情况：</h3><ol>
 <li>当将null或者是undefined作为this的绑定对象传入call、apply或者bind，这些值在调用时会被忽略，实际应用的是默认绑定规则。</li>
