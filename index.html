@@ -288,6 +288,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/optimization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/optimization/" itemprop="url">前端性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T17:22:44+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">前端性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h1><hr>
+<h3 id="浏览器缓存机制"><a href="#浏览器缓存机制" class="headerlink" title="浏览器缓存机制"></a>浏览器缓存机制</h3><p>浏览器缓存机制有四个方面，按照获取资源时请求的优先级排列如下： </p>
+<ul>
+<li>Memory Cache  </li>
+<li>Service Worker Cache  </li>
+<li>HTTP Cache  </li>
+<li>Push Cache</li>
+</ul>
+<p><strong>Memory Cache：</strong>内存中的缓存，优先级最高，是浏览器最先尝试去命中的一种缓存，响应速度最快。但由于内存资源有限，一般只有小文件会被放进Memory Cache，而大文件放进磁盘。<br><strong>Service Worker Cache：</strong>Service Worker是一种独立于主线程之外的JS线程，脱离于浏览器窗体，无法直接访问DOM，一般用来实现离线缓存、消息推送和网络代理等功能。<br><strong>HTTP Cache：</strong>分为强缓存和协商缓存两种，强缓存优先级较高，在命中强缓存失败的情况下，会走协商缓存。  </p>
+<ul>
+<li>强缓存：利用HTTP头中的Expires和Cache-Control两个字段控制。在强缓存中，当请求发出时，浏览器会根据这两个字段去判断目标资源是否命中，若命中则直接从缓存中获取资源，不与服务端进行通信。<br>Expires 是 HTTP/1.0 的产物，表示资源会在 Wed, 22 Oct 2018 08:41:00 GMT 后过期，需要再次请求。并且 Expires 受限于本地时间，如果修改了本地时间，可能会造成缓存失效。<br>Cache-Control 出现于 HTTP/1.1，优先级高于 Expires 。该属性表示资源会在多少秒后过期，需要再次请求。  </li>
+</ul>
+<pre><code>
+Expires: XXX GMT（HTTP/1.0）
+Cache-Control: max-age=XXX（HTTP/1.1）</code></pre><ul>
+<li>协商缓存：协商缓存依赖于服务端和浏览器之间的通信，浏览器需要向服务器询问缓存的相关信息，进而判断是否需要重新发起请求。如果服务端提示缓存资源未改动，资源会被重定向到浏览器缓存，对应状态码返回304。<br>协商缓存有两种实现方式：Last-Modified 和 If-Modified-Since、ETag 和 If-None-Match。  </li>
+</ul>
+<p><strong>Last-Modified和If-Modified-Since：</strong>Last-Modified 表示本地文件最后修改日期，If-Modified-Since 会将 Last-Modified 的值发送给服务器，询问服务器在该日期后资源是否有更新，有更新的话就会将新的资源发送回来。但是如果在本地打开缓存文件，就会造成 Last-Modified 被修改，所以在 HTTP / 1.1 出现了 ETag 。<br><strong>ETag和If-None-Match：</strong>ETag类似于文件指纹，If-None-Match 会将当前ETag发送给服务器，询问该资源ETag是否变动，有变动的话就将新的资源发送回来，并且ETag优先级比Last-Modified高。<br><strong>Push Cache：</strong>Push Cache是指HTTP2在server push阶段存在的缓存，是缓存的最后一道防线，当前三种缓存均未命中的情况下使用。Push Cache存在于会话阶段，当session终止时，缓存也随之释放。不同的页面只要共享了同一个HTTP2连接，就可以共享同一个Push Cache。</p>
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>CDN有两个核心概念：缓存和回调。<br>缓存指把资源复制一份到CDN服务器上的这个过程，回调指CDN发现自己没有这个资源或资源失效，去向根服务器请求资源的过程。<br>使用：静态资源尽量使用CDN加载，由于浏览器对于单个域名有并发请求上限，可以考虑使用多个CDN域名。对于CDN加载静态资源需要注意CDN域名要与主站不同，否则每次请求都会带上主站的Cookie。</p>
+<h3 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h3><h4 id="图片大小"><a href="#图片大小" class="headerlink" title="图片大小"></a>图片大小</h4><ul>
+<li>减少像素点；</li>
+<li>减少每个像素点能够显示的颜色；<h4 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h4></li>
+<li>使用CSS代替部分修饰类图片；</li>
+<li>计算适配屏幕的宽度，请求相应裁剪好的图片；</li>
+<li>小图使用base64格式；</li>
+<li>将多个图标文件整合到一张图片中（雪碧图）；</li>
+<li>选择正确的图片格式；<h3 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h3><h4 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h4></li>
+<li>处理HTML并构建DOM树；</li>
+<li>处理CSS并构建CSSOM树；</li>
+<li>将DOM与CSSOM合并成一个渲染树；</li>
+<li>根据渲染树布局，计算每个节点的位置；</li>
+<li>调用GPU绘制，合成图层并显示；  </li>
+</ul>
+<p><strong>预加载：</strong>预先获取资源，预加载是声明式的fetch，强制浏览器请求资源，不会阻塞onload事件。<br><strong>预渲染：</strong>通过预渲染将下载的文件预先在后台渲染，预渲染虽然可以提高页面的加载速度，但是要确保该页面会被用户在之后打开，否则就会产生资源浪费。<br><strong>懒执行：</strong>懒执行就是将某些逻辑延迟到使用时再计算。该技术可以用于首屏优化，对于某些耗时逻辑并不需要在首屏就使用的，就可以使用懒执行。懒执行需要唤醒，一般可以通过定时器或者事件的调用来唤醒。<br><strong>懒加载：</strong>懒加载就是将不关键的资源延后加载。懒加载的原理就是只加载自定义区域内需要加载的东西。对于图片来说，先设置图片标签的src属性为一张占位图，将真实的图片资源放入一个自定义属性中，当进入自定义区域时，就将自定义属性替换为src属性，这样图片就会去下载资源，实现了图片懒加载。  </p>
+<h4 id="回流与重绘"><a href="#回流与重绘" class="headerlink" title="回流与重绘"></a>回流与重绘</h4><p><strong>回流：</strong>对DOM的修改引发了DOM几何尺寸的变化时，浏览器需要重新计算元素的几何属性，再将计算结果绘制出来，这个过程称为回流。<br><strong>重绘：</strong>对DOM的修改导致样式的变化，但并未影响几何属性时，浏览器不需要重新计算元素的几何属性，直接为元素绘制新的样式即可，这个过程称为重绘。<br>回流必定会发生重绘，重绘不一定会引发回流。回流所需的成本比重绘高的多，改变深层次的节点很可能导致父节点的一系列回流。在实际开发过程中，应尽可能减少回流与重绘。  </p>
+<p><a href="https://yuchengkai.cn/docs/frontend/performance.html" target="_blank" rel="noopener">参考文献：https://yuchengkai.cn/docs/frontend/performance.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/http/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1371,7 +1548,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1382,7 +1559,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1393,7 +1570,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
