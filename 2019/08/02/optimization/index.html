@@ -81,7 +81,7 @@
 <meta property="og:site_name" content="Sharing">
 <meta property="og:description" content="前端性能优化 浏览器缓存机制浏览器缓存机制有四个方面，按照获取资源时请求的优先级排列如下：   Memory Cache   Service Worker Cache   HTTP Cache   Push Cache  Memory Cache：内存中的缓存，优先级最高，是浏览器最先尝试去命中的一种缓存，响应速度最快。但由于内存资源有限，一般只有小文件会被放进Memory Cache，而大文件放">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T09:24:00.702Z">
+<meta property="og:updated_time" content="2019-08-02T14:44:32.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端性能优化">
 <meta name="twitter:description" content="前端性能优化 浏览器缓存机制浏览器缓存机制有四个方面，按照获取资源时请求的优先级排列如下：   Memory Cache   Service Worker Cache   HTTP Cache   Push Cache  Memory Cache：内存中的缓存，优先级最高，是浏览器最先尝试去命中的一种缓存，响应速度最快。但由于内存资源有限，一般只有小文件会被放进Memory Cache，而大文件放">
@@ -404,12 +404,12 @@ Cache-Control: max-age=XXX（HTTP/1.1）</code></pre><ul>
 <h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>CDN有两个核心概念：缓存和回调。<br>缓存指把资源复制一份到CDN服务器上的这个过程，回调指CDN发现自己没有这个资源或资源失效，去向根服务器请求资源的过程。<br>使用：静态资源尽量使用CDN加载，由于浏览器对于单个域名有并发请求上限，可以考虑使用多个CDN域名。对于CDN加载静态资源需要注意CDN域名要与主站不同，否则每次请求都会带上主站的Cookie。</p>
 <h3 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h3><h4 id="图片大小"><a href="#图片大小" class="headerlink" title="图片大小"></a>图片大小</h4><ul>
 <li>减少像素点；</li>
-<li>减少每个像素点能够显示的颜色；<h4 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h4></li>
+<li>减少每个像素点能够显示的颜色；<br><h4 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h4></li>
 <li>使用CSS代替部分修饰类图片；</li>
 <li>计算适配屏幕的宽度，请求相应裁剪好的图片；</li>
 <li>小图使用base64格式；</li>
 <li>将多个图标文件整合到一张图片中（雪碧图）；</li>
-<li>选择正确的图片格式；<h3 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h3><h4 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h4></li>
+<li>选择正确的图片格式；<br><h3 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h3><h4 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h4></li>
 <li>处理HTML并构建DOM树；</li>
 <li>处理CSS并构建CSSOM树；</li>
 <li>将DOM与CSSOM合并成一个渲染树；</li>
@@ -542,7 +542,7 @@ Cache-Control: max-age=XXX（HTTP/1.1）</code></pre><ul>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
