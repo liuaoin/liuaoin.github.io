@@ -288,6 +288,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/prototype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/prototype/" itemprop="url">JS中的原型对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T22:51:54+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JS中的原型对象"><a href="#JS中的原型对象" class="headerlink" title="JS中的原型对象"></a>JS中的原型对象</h1><p>构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。<br>JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。  </p>
+<h3 id="构造函数的继承"><a href="#构造函数的继承" class="headerlink" title="构造函数的继承"></a>构造函数的继承</h3><ol>
+<li>将子构造函数的prototype属性指向一个父构造函数的实例</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	Cat.prototype = <span class="keyword">new</span> Animal();     </span><br><span class="line">	Cat.prototype.constructor = Cat;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">注意：为了避免继承链的紊乱，在修改了prototype属性指向的原型对象后，须手动为新的原型对象加上constructor属性，指回原来的构造函数。   </span></span><br><span class="line"><span class="string">2. 直接继承父构造函数的prototype</span></span><br><span class="line"><span class="string">             </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> JavaScript</span><br><span class="line"></span><br><span class="line">	Cat.prototype = Animal.prototype;</span><br><span class="line">	Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure>
+
+<p>注意：与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反应到Animal.prototype。  </p>
+<ol start="3">
+<li>利用空对象作为中介</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;  </span><br><span class="line">		<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  </span><br><span class="line">		F.prototype = Parent.prototype;  </span><br><span class="line">		Child.prototype = <span class="keyword">new</span> F();  </span><br><span class="line">		Child.prototype.constructor = Child;  </span><br><span class="line">	&#125;  </span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">F是空对象，所以几乎不占内存，同时，修改Cat的prototype对象，不会影响到Animal的prototype对象。  </span></span><br><span class="line"><span class="string">4. 拷贝继承，将父构造函数的prototype对象中的属性，拷贝给子构造函数的prototype对象。</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> JavaScript</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> p = Parent.prototype;</span><br><span class="line">		<span class="keyword">var</span> c = Child.prototype;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123;</span><br><span class="line">			c[i] = p[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<br> 
+5. 构造函数绑定，使用call或apply方法，将父对象的构造函数绑定在子对象上。  
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		Animal.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">### 非构造函数的继承</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1. 浅拷贝</span></span><br><span class="line"><span class="string">   </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> JavaScript  </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> c = &#123;&#125;;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123; </span><br><span class="line">			c[i] = p[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把父对象的属性，全部拷贝给子对象。但是需要注意，如果父对象的属性为数组或对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被修改的可能性。  </p>
+<ol start="2">
+<li><p>深拷贝</p>
+<pre><code class="JavaScript">
+<span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">p, c</span>) </span>{
+    <span class="keyword">var</span> c = c || {};
+    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) {
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> p[i] === <span class="string">'object'</span>) {
+            c[i] = (p[i].constructor === <span class="built_in">Array</span>) ? [] : {};
+            deepCopy(p[i], c[i]);
+        } <span class="keyword">else</span> {
+            c[i] = p[i];
+        }
+    }
+    <span class="keyword">return</span> c;
+}</code></pre>
+<p>通过递归调用浅拷贝实现真正意义上数组和对象的拷贝。</p>
+</li>
+</ol>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="/2019/08/03/prototype/prototype.png" alt="原型链">  </p>
+<ul>
+<li>所有对象都具有_proto_属性，指向生成该对象的构造函数的原型对象，Function是一个特殊的对象；  </li>
+<li>prototype属性只有构造函数拥有，指向构造函数的原型对象；  </li>
+<li>原型对象拥有constructor属性，指向构造函数；  </li>
+<li>原型对象的用途是包含所有实例对象共有的属性和方法；  </li>
+</ul>
+<p><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">参考文献：http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/imageformat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1643,159 +1827,6 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/24/vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/24/vue/" itemprop="url">数据双向绑定</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T21:36:41+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue-js/" itemprop="url" rel="index">
-                    <span itemprop="name">vue.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Vue-js数据双向绑定"><a href="#Vue-js数据双向绑定" class="headerlink" title="Vue.js数据双向绑定"></a>Vue.js数据双向绑定</h1><hr>
-<h3 id="实现以下代码功能："><a href="#实现以下代码功能：" class="headerlink" title="实现以下代码功能："></a>实现以下代码功能：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div id=<span class="string">'app'</span>&gt;</span><br><span class="line">       &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"text"</span>&gt;</span><br><span class="line">    &#123;&#123;text&#125;&#125;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">   var vm = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">	el: '#app',</span></span><br><span class="line"><span class="regexp">	data: &#123;</span></span><br><span class="line"><span class="regexp">		text: 'hello world'</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分成几部分实现："><a href="#分成几部分实现：" class="headerlink" title="分成几部分实现："></a>分成几部分实现：</h3><ol>
-<li>输入框以及文本节点与data中的数据绑定;</li>
-<li>输入框内容变化时，data中的数据同步变化，即view=&gt;model;</li>
-<li>data中的数据变化时，文本节点的内容同步变化,即model=&gt;view;</li>
-</ol>
-<h3 id="DocumentFragment原理解析"><a href="#DocumentFragment原理解析" class="headerlink" title="DocumentFragment原理解析"></a>DocumentFragment原理解析</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>     </span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> dom = nodeToFragment(<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">nodeToFragment</span><span class="params">(node)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> flag = <span class="built_in">document</span>.createDocumentFragment();</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> child;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">while</span>(child = node.firstChild) &#123;</span></span><br><span class="line">			flag.appendChild(child);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span> flag;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>).appendChild(dom);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数据初始化绑定"><a href="#数据初始化绑定" class="headerlink" title="数据初始化绑定"></a>数据初始化绑定</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compile(<span class="type">node</span>,vm) &#123;</span><br><span class="line">	var reg = /\&#123;\&#123;\(.*)\&#125;\&#125;/;</span><br><span class="line">	<span class="keyword">if</span>(<span class="type">node</span>.nodeType === <span class="number">1</span>) &#123;</span><br><span class="line">		var attr = <span class="type">node</span>.attributes;</span><br><span class="line">		<span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; attr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(attr[i].nodeName == <span class="string">'v-model'</span>) &#123;</span><br><span class="line">				var<span class="built_in"> name</span> = attr[i].nodeValue;</span><br><span class="line">				<span class="type">node</span>.<span class="keyword">value</span> = vm.data<span class="built_in">[name</span>];</span><br><span class="line">				<span class="type">node</span>.removeAttribute(<span class="string">'v-model'</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="type">node</span>.nodeType === <span class="number">3</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(reg.test(<span class="type">node</span>.nodeValue)) &#123;</span><br><span class="line">			var<span class="built_in"> name</span> = RegExp.<span class="variable">$1</span>;</span><br><span class="line">		<span class="built_in">	name</span> =<span class="built_in"> name</span>.trim();</span><br><span class="line">			<span class="type">node</span>.nodeValue = vm.data<span class="built_in">[name</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1855,7 +1886,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1866,7 +1897,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
