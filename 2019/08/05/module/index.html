@@ -81,7 +81,7 @@
 <meta property="og:site_name" content="Sharing">
 <meta property="og:description" content="前端模块化 什么是模块化？&amp;emsp;&amp;emsp;将一个复杂的程序分解成多个独立的模块的代码组织方式，模块内部的数据与方法是私有的, 只是通过向外部暴露一些接口来实现与外部其它模块之间的通信。 为什么要模块化？&amp;emsp;&amp;emsp;解决程序之间的依赖关系以及命名冲突，更高的复用性和可维护性。 模块化发展历程对象封装&amp;emsp;&amp;emsp;通过将数据和方法封装到一个全局对象上实现。优点：减少了全局">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T15:49:55.244Z">
+<meta property="og:updated_time" content="2020-02-10T03:12:22.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模块化">
 <meta name="twitter:description" content="前端模块化 什么是模块化？&amp;emsp;&amp;emsp;将一个复杂的程序分解成多个独立的模块的代码组织方式，模块内部的数据与方法是私有的, 只是通过向外部暴露一些接口来实现与外部其它模块之间的通信。 为什么要模块化？&amp;emsp;&amp;emsp;解决程序之间的依赖关系以及命名冲突，更高的复用性和可维护性。 模块化发展历程对象封装&amp;emsp;&amp;emsp;通过将数据和方法封装到一个全局对象上实现。优点：减少了全局">
@@ -390,10 +390,16 @@
 <h5 id="IIFE模式"><a href="#IIFE模式" class="headerlink" title="IIFE模式"></a>IIFE模式</h5><p>&emsp;&emsp;将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口。<br>优点：数据是私有的，外部只能通过暴露的方法操作；<br>缺点：模块之间的依赖性无法体现；</p>
 <h5 id="引入多个js文件"><a href="#引入多个js文件" class="headerlink" title="引入多个js文件"></a>引入多个js文件</h5><p>优点：相比使用一个js文件，实现了最简单的模块化思想；<br>缺点：污染全局作用域，依赖关系不明显，不利于维护；</p>
 <h3 id="模块化规范"><a href="#模块化规范" class="headerlink" title="模块化规范"></a>模块化规范</h3><h5 id="第一阶段：CommonJS规范"><a href="#第一阶段：CommonJS规范" class="headerlink" title="第一阶段：CommonJS规范"></a>第一阶段：CommonJS规范</h5><p>&emsp;&emsp;CommonJS是一个JavaScript模块化的规范，最初用于服务器端的node.js中，前端的webpack对CommonJS也是原生支持的，核心思想是通过require方法来同步加载所要依赖的其他模块，然后通过exports或者module.exports来导出需要暴露的接口，在运行时加载所有模块并生成一个对象；<br>优点：CommonJS规范在服务器端率先完成了JavaScript的模块化，解决了依赖、全局变量污染的问题；<br>缺点：CommonJS是同步加载模块的，在服务器端，文件都是保存在硬盘上，所以同步加载没有问题，但对于浏览器端则不适用；  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = math;</span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
+
 <h5 id="第二阶段：AMD规范"><a href="#第二阶段：AMD规范" class="headerlink" title="第二阶段：AMD规范"></a>第二阶段：AMD规范</h5><p>&emsp;&emsp;AMD规范是异步加载模块，实现的js库为require.js，允许指定回调函数，AMD中通过define来定义一个模块，然后使用require来加载一个模块，并且require还支持CommonJS的模块导出方式；<br>优点：适合在浏览器环境中异步加载模块，可以并行加载多个模块；<br>缺点：提高了开发成本，并且不能按需加载，而是必须提前加载所有的依赖；  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"./cart"</span>, <span class="string">"./inventory"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">cart, inventory</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            color: <span class="string">"blue"</span>,</span><br><span class="line">            size: <span class="string">"large"</span>,</span><br><span class="line">            addToCart: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                inventory.decrement(<span class="keyword">this</span>);</span><br><span class="line">                cart.add(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//module.exports = function () &#123;&#125;;    //AMD规范允许输出的模块兼容CommonJS规范</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">requirejs([<span class="string">'helper/util'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">util</span>) </span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h5 id="第三阶段：CMD规范"><a href="#第三阶段：CMD规范" class="headerlink" title="第三阶段：CMD规范"></a>第三阶段：CMD规范</h5><p>&emsp;&emsp;实现的js库为sea.js，与require.js非常类似，一个js文件就是一个模块，但CMD的加载方式是按需加载，而不是在模块开始就加载所有的依赖；<br>优点：实现了浏览器端的模块化加载，可以按需加载，依赖就近；<br>缺点：依赖SPM打包，模块的加载逻辑偏重；</p>
-<h5 id="第四阶段：ES6模块化"><a href="#第四阶段：ES6模块化" class="headerlink" title="第四阶段：ES6模块化"></a>第四阶段：ES6模块化</h5><p>&emsp;&emsp;ES6的模块化方案是真正意义上的规范，前面的几种都是前端社区内部实现的。在ES6中，可以使用import关键字引入模块，通过export关键字导出模块，功能更为强大，但由于ES6目前的浏览器支持度原因，所以只能通过babel将不被支持的import编译为当前受到广泛支持的require。ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量，即在编译时就完成模块加载，效率比CommonJS模块的加载方式高。 </p>
-<p>参考文献：<br><a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a><br><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">https://www.imooc.com/article/20057</a><br><a href="https://blog.csdn.net/howgod/article/details/87466148" target="_blank" rel="noopener">https://blog.csdn.net/howgod/article/details/87466148</a></p>
+<h5 id="第四阶段：ES6模块化"><a href="#第四阶段：ES6模块化" class="headerlink" title="第四阶段：ES6模块化"></a>第四阶段：ES6模块化</h5><p>&emsp;&emsp;ES6模块的设计思想是尽量的静态化，在编译时确定模块的依赖关系，以及输入和输出的变量，可以在编译时做静态优化，效率更高。在ES6中，使用import关键字引入模块，通过export关键字导出模块，但由于ES6目前的浏览器支持度原因，所以只能通过babel将不被支持的import编译为当前受到广泛支持的require。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> str = <span class="string">"test"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; str &#125;;</span><br><span class="line"><span class="keyword">export</span> &#123; add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; str &#125; <span class="keyword">from</span> <span class="string">"test.js"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; add &#125; <span class="keyword">from</span> <span class="string">"test.js"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意：import是静态执行，所以不能使用表达式和变量等运行时才能得到结果的语法结构，所以无法实现条件加载，<br>命令只能在模块的顶层，不能在代码块之中；<br>import命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口，但是如果输出的是对象，允许修改对象属性；<br>import命令具有提升效果，会提升到整个模块的头部，首先执行；<br>参考文献：<br><a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a><br><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">https://www.imooc.com/article/20057</a><br><a href="https://blog.csdn.net/howgod/article/details/87466148" target="_blank" rel="noopener">https://blog.csdn.net/howgod/article/details/87466148</a></p>
 
       
     </div>
@@ -433,6 +439,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/10/attack/" rel="prev" title="常见的攻击及防御">
+                常见的攻击及防御 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -539,7 +549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -609,7 +619,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

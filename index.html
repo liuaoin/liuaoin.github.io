@@ -288,6 +288,607 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/10/ajax/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T11:15:51+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Ajax封装"><a href="#Ajax封装" class="headerlink" title="Ajax封装"></a>Ajax封装</h1><hr>
+<h3 id="封装参数"><a href="#封装参数" class="headerlink" title="封装参数"></a>封装参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    url: <span class="string">"/"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">    data: <span class="string">""</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    timeout: <span class="literal">null</span>,</span><br><span class="line">    beforeSend: <span class="function"><span class="keyword">function</span>(<span class="params">xmlHttp</span>) </span>&#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeReceive: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//也可采用$.extend进行属性合并</span></span><br><span class="line"><span class="built_in">Object</span>.assign(options, params);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取xmlHttp对象"><a href="#获取xmlHttp对象" class="headerlink" title="获取xmlHttp对象"></a>获取xmlHttp对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlHttp = ajax.getXmlHttp();</span><br><span class="line">ajax.getXmlHttp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">        <span class="comment">// IE7+, Firefox, Chrome, Opera, Safari 浏览器支持XMLHttpRequest </span></span><br><span class="line">        xmlHttp = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// IE6, IE5 浏览器使用ActiveXObject</span></span><br><span class="line">        xmlHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.open(options.type,options.url,options.async);</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置请求头"><a href="#设置请求头" class="headerlink" title="设置请求头"></a>设置请求头</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.setRequestHeader();</span><br></pre></td></tr></table></figure>
+
+<h3 id="拦截请求"><a href="#拦截请求" class="headerlink" title="拦截请求"></a>拦截请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可修改请求参数</span></span><br><span class="line">xmlHttp.beforeSend(xmlHttp, options.type, options.url);</span><br></pre></td></tr></table></figure>
+
+<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.send(options.data);</span><br></pre></td></tr></table></figure>
+
+<h3 id="接收返回值"><a href="#接收返回值" class="headerlink" title="接收返回值"></a>接收返回值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//readyState为4时，响应参数全部返回，可在根据各种状态码及返回值作对应处理</span></span><br><span class="line">    <span class="keyword">if</span>(xmlHttp.readyState == <span class="number">4</span> &amp;&amp; xmlHttp.status == <span class="number">200</span>)&#123;</span><br><span class="line">        options.callback(xmlHttp.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整示例"><a href="#完整示例" class="headerlink" title="完整示例"></a>完整示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装</span></span><br><span class="line">ajax.request = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> options = <span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">        url: <span class="string">"/"</span>,</span><br><span class="line">        type: <span class="string">"POST"</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">        data: <span class="string">""</span>,</span><br><span class="line">        dataType: <span class="string">"json"</span>,</span><br><span class="line">        beforeSend: <span class="function"><span class="keyword">function</span>(<span class="params">xmlHttp</span>) </span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        beforeReceive: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;	</span><br><span class="line">    &#125;, params);</span><br><span class="line">    <span class="keyword">var</span> xmlHttp = ajax.getXmlHttp();</span><br><span class="line">    xmlHttp.open(options.type,options.url,options.async);</span><br><span class="line">    xmlHttp.setRequestHeader();</span><br><span class="line">    xmlHttp.beforeSend(xmlHttp, options.type, options.url);</span><br><span class="line">    xmlHttp.send(options.data);</span><br><span class="line">    xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//readyState为4时，响应参数全部返回，可在根据各种状态码及返回值作对应处理</span></span><br><span class="line">        <span class="keyword">if</span>(xmlHttp.readyState == <span class="number">4</span> &amp;&amp; xmlHttp.status == <span class="number">200</span>)&#123;</span><br><span class="line">            options.beforeReceive(xmlHttp.responseText);</span><br><span class="line">            setTimeout(options.success(xmlHttp.responseText), <span class="number">1000</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            options.error();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">ajax.beforeSend = <span class="function"><span class="keyword">function</span>(<span class="params">xmlHttp</span>) </span>&#123;&#125;;</span><br><span class="line">ajax.beforeReceive = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//执行同步任务</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请求</span></span><br><span class="line">ajax.request(&#123;</span><br><span class="line">    url: <span class="string">"/"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">    data: <span class="string">""</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    beforeReceive: ajax.beforeReceive,</span><br><span class="line">    beforeSend: ajax.beforeSend;</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/accessControl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/10/accessControl/" itemprop="url">前端权限控制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T11:14:47+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前端权限控制"><a href="#前端权限控制" class="headerlink" title="前端权限控制"></a>前端权限控制</h1><hr>
+<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p>&emsp;&emsp;当系统适用于不同用户，而不同用户所使用到的系统功能存在差异的时候，权限控制就显得比较重要。此外，考虑安全性和性能方面的需求，权限控制也是不可缺少的。</p>
+<h3 id="前端权限控制的作用"><a href="#前端权限控制的作用" class="headerlink" title="前端权限控制的作用"></a>前端权限控制的作用</h3><p>&emsp;&emsp;从技术层面来讲，权限控制可以只在后端实现。但前端的权限控制也有不可或缺的作用。  </p>
+<ol>
+<li>隔离操作，提升突破权限的门槛；  </li>
+<li>提升系统性能，避免和过滤越权请求，减轻服务端压力；  </li>
+<li>提升用户体验；<h3 id="前端实现权限控制"><a href="#前端实现权限控制" class="headerlink" title="前端实现权限控制"></a>前端实现权限控制</h3><h4 id="权限划分"><a href="#权限划分" class="headerlink" title="权限划分"></a>权限划分</h4>&emsp;&emsp;权限控制的第一步是权限划分，首先要知道用户具有哪些权限才能进行管理，具体可参考RBAC模型。  <h4 id="权限数据"><a href="#权限数据" class="headerlink" title="权限数据"></a>权限数据</h4>&emsp;&emsp;对前端而言，在用户登录后第一步就是获取权限数据，不同系统的权限数据可能存在差异，但最终指向基本都是路由权限和资源权限。  </li>
+</ol>
+<p><strong>路由权限：</strong> 用户可访问的路由集合，以此作为设置前端路由和生成导航菜单的依据；<br><strong>资源权限：</strong> 用户可访问的资源集合，“资源” 概念来自 RESTful 架构，通俗意义即为API；</p>
+<h4 id="权限分配"><a href="#权限分配" class="headerlink" title="权限分配"></a>权限分配</h4><p>&emsp;&emsp;由于权限分配可能涉及到很多资源集合，单个添加尤为繁琐，因此很多系统会通过角色来分配权限，授权时只需要对用户赋予特定的角色即可。</p>
+<h4 id="权限控制-1"><a href="#权限控制-1" class="headerlink" title="权限控制"></a>权限控制</h4><p><strong>路由控制：</strong> 路由控制的思路有两种，一种是初始挂载全部路由，每次路由跳转前做校验；另一种是只挂载用户有权限访问的路由，从源头控制。前者每一次路由跳转都要做一次校验，比较浪费资源，对于用户无权访问的路由，最好的实现方式就是不挂载。<br><strong>资源控制：</strong> 资源控制原理是对请求作拦截，在请求拦截器中对请求的url和资源权限数据作比对，再判断是否进行拦截。根据url的不同可考虑采用模式匹配，前后端最好协商一致以便处理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/authorization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/10/authorization/" itemprop="url">常用登录鉴权方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T11:13:05+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用登录鉴权方式"><a href="#常用登录鉴权方式" class="headerlink" title="常用登录鉴权方式"></a>常用登录鉴权方式</h1><hr>
+<h3 id="Basic鉴权"><a href="#Basic鉴权" class="headerlink" title="Basic鉴权"></a>Basic鉴权</h3><p>&emsp;&emsp;HTTP/1.0定义的认证方式，一般用于内部局域网系统FTP登录，使用较少。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，包含Basic（认证方式）与realm（安全域）两个值。<br>&emsp;&emsp;2. 客户端接收到401状态码后，为了通过认证，需要将用户名及密码发送给服务器，发送的形式为用户名和密码组成的字符串，中间以冒号连接，再经过Base64编码处理。（此过程一般浏览器会进行处理，触发一个自带的弹窗，提示输入用户名和密码进行验证）。<br>&emsp;&emsp;3. 服务端接收到包含Authorization请求头字段的请求，对认证的信息进行校验，通过验证后，返回对应的资源响应。</p>
+<pre><code>WWW-Authenticate: Basic realm=&quot;&quot;     
+Authorization: Basic Base64(username:password)  </code></pre><h3 id="Digest鉴权"><a href="#Digest鉴权" class="headerlink" title="Digest鉴权"></a>Digest鉴权</h3><p>&emsp;&emsp;HTTP/1.1新增的认证方式，弥补了Basic认证直接发送明文密码的缺点，改用质询响应方式替代实现。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，此字段必须包含realm和nonce两个值，客户端依赖这两个值进行认证。此外，有一些附加值可用于限制。<br>&emsp;&emsp;2. 客户端接收到401状态码后，返回包含认证必须的首部字段Authorization信息。首部字段Authorization内必须包含 username、realm、nonce、uri 和response的字段信息。其中，realm 和nonce为之前从服务器接收到的响应中的值。<br>&emsp;&emsp;3. 服务端接收到包含Authorization请求头字段的请求，对认证的信息进行校验，通过验证后，返回对应的资源响应。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WWW-Authenticate: Digest realm=<span class="string">"Digest"</span>, nonce=<span class="string">""</span>     </span><br><span class="line">Authorization: Digest username=<span class="string">""</span>, realm=<span class="string">""</span>, nonce=<span class="string">""</span>, uri=<span class="string">""</span>, response=, qop=auth, nc=<span class="number">00000001</span>, cnonce=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>The WWW-Authentaicate Response Header：</strong><br>realm: 域值，是一个可选参数，应至少包含主机名，代表一个授权范围。<br>nonce: 服务端产生的随机数，用于增加验证信息的复杂性。<br>qop-options: 质量保护，可选参数，默认值为auth，用于标识认证的程度，auth-int包含了完整性校验。<br>stale: nonce过期标志，不用于初始校验。<br>algorithm: 摘要算法。<br><strong>The Authorization Request Header</strong><br>username: 用户名。<br>digest-uri: 请求的URI。<br>qop: qop-options中的可选值，表示选择的质量保护类型。<br>cnonce: 由客户端产生的随机数，如果指定了qop值，则必须设定此值。<br>response: 32位16进制字符串，包含加密后的用户信息。<br>nc: 8位16进制数，标记请求的次数，结合nonce预防重放攻击。</p>
+<h3 id="session-cookie鉴权"><a href="#session-cookie鉴权" class="headerlink" title="session-cookie鉴权"></a>session-cookie鉴权</h3><p>&emsp;&emsp;利用服务器端的session和浏览器端的cookie来实现认证。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 服务端在接受客户端首次访问时在服务端创建session，然后将session保存在内存或redis中，给session生成一个唯一的标识字符串sessionId，将其加入响应头。<br>&emsp;&emsp;2. 客户端收到响应后进行解析，将sessionId保存在cookie中，在下次请求时请求头中会带上该域名下的cookie信息。<br>&emsp;&emsp;3. 服务端解析请求头cookie中的sessionId，然后根据这个sessionId去匹配保存的客户端session，判断是否合法。</p>
+<h3 id="Token鉴权"><a href="#Token鉴权" class="headerlink" title="Token鉴权"></a>Token鉴权</h3><p><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端使用用户名和密码发起登录请求。<br>&emsp;&emsp;2. 服务端收到请求，验证用户名与密码。<br>&emsp;&emsp;3. 验证成功后，服务端签发一个Token，返回给客户端。<br>&emsp;&emsp;4. 客户端收到Token后进行存储，可放在cookie或者Local Storage中。<br>&emsp;&emsp;5. 客户端每次向服务端请求资源的时候带着服务端签发的Token。<br>&emsp;&emsp;6. 服务端收到请求，然后去验证客户端请求中携带的Token，验证成功则向客户端返回请求的数据。  </p>
+<h3 id="oAuth鉴权"><a href="#oAuth鉴权" class="headerlink" title="oAuth鉴权"></a>oAuth鉴权</h3><p> &emsp;&emsp;OAuth（开放授权）是一个开放标准，允许用户授权第三方网站访问它们存储在其它服务提供者上的信息，而不需要将用户名和密码提供给第三方网站或分享它们数据的所有内容，为了保护用户数据的安全和隐私，第三方网站访问用户数据前都需要显式的向用户征求授权。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 向用户请求授权，通过登录网站放置的第三方登录入口点击登录，由第三方授权服务引导进入第三方登录授权页面。<br>&emsp;&emsp;2. 当用户点击授权并登录后，授权服务器会返回一个用户凭证。<br>&emsp;&emsp;3. 第三方应用后台通过第二步的凭证向授权服务器请求Access Token。<br>&emsp;&emsp;4. 授权服务器同意授权后，返回一个资源访问的凭证Access Token。<br>&emsp;&emsp;5. 第三方应用通过第四步返回的Access Token登录网站请求资源。<br>&emsp;&emsp;6. 登录网站验证通过后，返回对应的资源。 </p>
+<h3 id="为什么通过登录后每次请求仍需要携带鉴权信息？"><a href="#为什么通过登录后每次请求仍需要携带鉴权信息？" class="headerlink" title="为什么通过登录后每次请求仍需要携带鉴权信息？"></a>为什么通过登录后每次请求仍需要携带鉴权信息？</h3><ol>
+<li>HTTP协议是无状态的，服务器不会保存会话信息，因此需要一种机制来判断用户是否登录过，对每一次HTTP请求进行验证。</li>
+<li>防止用户跳过登录页面，直接访问内部页面。</li>
+</ol>
+<p>参考文献：<a href="http://www.faqs.org/rfcs/rfc2617.html" target="_blank" rel="noopener">http://www.faqs.org/rfcs/rfc2617.html</a><br>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="https://blog.csdn.net/enweitech/article/details/89468297" target="_blank" rel="noopener">https://blog.csdn.net/enweitech/article/details/89468297</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/attack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/10/attack/" itemprop="url">常见的攻击及防御</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T11:08:14+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常见的攻击及防御"><a href="#常见的攻击及防御" class="headerlink" title="常见的攻击及防御"></a>常见的攻击及防御</h1><hr>
+<h3 id="XSS（Cross-Site-Scripting）跨站脚本攻击"><a href="#XSS（Cross-Site-Scripting）跨站脚本攻击" class="headerlink" title="XSS（Cross Site Scripting）跨站脚本攻击"></a>XSS（Cross Site Scripting）跨站脚本攻击</h3><p><strong>攻击原理：</strong> 利用站点内的信任用户，向页面中注入可执行的脚本。<br><strong>攻击类型：</strong> 反射型和存储型。<br><strong>防御方法：</strong>  </p>
+<ol>
+<li>对提交的数据进行验证，过滤“&lt;”，“&gt;”，“ ‘ ”，“ “ ”等字符，排查javascript等相关可执行的代码。  </li>
+<li>对输出到页面的数据进行encode，避免直接显示html()函数显示内容。  </li>
+<li>避免直接在cookie中存放敏感数据。   </li>
+<li>使用HTTP only的cookie，禁止通过js获取cookie。   </li>
+<li>浏览器自带防御机制，在http头中打开X-XSS-Protection，默认值为1，打开状态。</li>
+</ol>
+<h3 id="CSRF（Cross-Site-Request-Forgy）跨站请求伪造"><a href="#CSRF（Cross-Site-Request-Forgy）跨站请求伪造" class="headerlink" title="CSRF（Cross Site Request Forgy）跨站请求伪造"></a>CSRF（Cross Site Request Forgy）跨站请求伪造</h3><p><strong>攻击原理：</strong> 通过伪装来自受信任用户的请求进行攻击，攻击建立在浏览器与服务器的会话过程中，通过欺骗用户发送请求达到攻击目的。<br><strong>漏洞检测：</strong> 通过抓包工具抓取数据包，去掉Referer字段后重新提交，若提交有效，则存在CSRF漏洞。（CSRF Tester, CSRF Request Builder等）<br><strong>防御方法：</strong>    </p>
+<ol>
+<li>验证HTTP Referer字段。根据HTTP协议，在HTTP头中有一个字段Referer，它记录了该HTTP请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站，因此，只要对每一个请求验证其Referer值即可判断该请求是否合法。  </li>
+<li>在HTTP请求中以参数的形式加入一个随机产生的token,服务端通过校验请求中的token判断请求是否非法。  </li>
+<li>在HTTP头中添加自定义属性，与方法2类似，也是通过添加Token进行验证，但是把Token放到了HTTP头的自定义属性中，避免添加参数的繁琐性。  </li>
+<li>设置same-site属性，限制第三方请求携带本网站的cookie。  </li>
+<li>设置验证码，发起请求后，只有输入正确的验证码才会进行相关操作。  </li>
+</ol>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><h3 id="Ddos（Distributed-Denial-of-Service）分布式拒绝服务攻击"><a href="#Ddos（Distributed-Denial-of-Service）分布式拒绝服务攻击" class="headerlink" title="Ddos（Distributed Denial of Service）分布式拒绝服务攻击"></a>Ddos（Distributed Denial of Service）分布式拒绝服务攻击</h3><p><strong>攻击原理：</strong> 利用网络协议和操作系统的一些缺陷，采用欺骗和伪装的策略来进行网络攻击，使网站服务器充斥大量要求回复的信息，消耗网络带宽或系统资源，导致网络或系统不胜负荷以至于瘫痪而停止提供正常的网络服务。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -388,10 +989,16 @@
 <h5 id="IIFE模式"><a href="#IIFE模式" class="headerlink" title="IIFE模式"></a>IIFE模式</h5><p>&emsp;&emsp;将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口。<br>优点：数据是私有的，外部只能通过暴露的方法操作；<br>缺点：模块之间的依赖性无法体现；</p>
 <h5 id="引入多个js文件"><a href="#引入多个js文件" class="headerlink" title="引入多个js文件"></a>引入多个js文件</h5><p>优点：相比使用一个js文件，实现了最简单的模块化思想；<br>缺点：污染全局作用域，依赖关系不明显，不利于维护；</p>
 <h3 id="模块化规范"><a href="#模块化规范" class="headerlink" title="模块化规范"></a>模块化规范</h3><h5 id="第一阶段：CommonJS规范"><a href="#第一阶段：CommonJS规范" class="headerlink" title="第一阶段：CommonJS规范"></a>第一阶段：CommonJS规范</h5><p>&emsp;&emsp;CommonJS是一个JavaScript模块化的规范，最初用于服务器端的node.js中，前端的webpack对CommonJS也是原生支持的，核心思想是通过require方法来同步加载所要依赖的其他模块，然后通过exports或者module.exports来导出需要暴露的接口，在运行时加载所有模块并生成一个对象；<br>优点：CommonJS规范在服务器端率先完成了JavaScript的模块化，解决了依赖、全局变量污染的问题；<br>缺点：CommonJS是同步加载模块的，在服务器端，文件都是保存在硬盘上，所以同步加载没有问题，但对于浏览器端则不适用；  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = math;</span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
+
 <h5 id="第二阶段：AMD规范"><a href="#第二阶段：AMD规范" class="headerlink" title="第二阶段：AMD规范"></a>第二阶段：AMD规范</h5><p>&emsp;&emsp;AMD规范是异步加载模块，实现的js库为require.js，允许指定回调函数，AMD中通过define来定义一个模块，然后使用require来加载一个模块，并且require还支持CommonJS的模块导出方式；<br>优点：适合在浏览器环境中异步加载模块，可以并行加载多个模块；<br>缺点：提高了开发成本，并且不能按需加载，而是必须提前加载所有的依赖；  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"./cart"</span>, <span class="string">"./inventory"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">cart, inventory</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            color: <span class="string">"blue"</span>,</span><br><span class="line">            size: <span class="string">"large"</span>,</span><br><span class="line">            addToCart: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                inventory.decrement(<span class="keyword">this</span>);</span><br><span class="line">                cart.add(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//module.exports = function () &#123;&#125;;    //AMD规范允许输出的模块兼容CommonJS规范</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">requirejs([<span class="string">'helper/util'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">util</span>) </span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h5 id="第三阶段：CMD规范"><a href="#第三阶段：CMD规范" class="headerlink" title="第三阶段：CMD规范"></a>第三阶段：CMD规范</h5><p>&emsp;&emsp;实现的js库为sea.js，与require.js非常类似，一个js文件就是一个模块，但CMD的加载方式是按需加载，而不是在模块开始就加载所有的依赖；<br>优点：实现了浏览器端的模块化加载，可以按需加载，依赖就近；<br>缺点：依赖SPM打包，模块的加载逻辑偏重；</p>
-<h5 id="第四阶段：ES6模块化"><a href="#第四阶段：ES6模块化" class="headerlink" title="第四阶段：ES6模块化"></a>第四阶段：ES6模块化</h5><p>&emsp;&emsp;ES6的模块化方案是真正意义上的规范，前面的几种都是前端社区内部实现的。在ES6中，可以使用import关键字引入模块，通过export关键字导出模块，功能更为强大，但由于ES6目前的浏览器支持度原因，所以只能通过babel将不被支持的import编译为当前受到广泛支持的require。ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量，即在编译时就完成模块加载，效率比CommonJS模块的加载方式高。 </p>
-<p>参考文献：<br><a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a><br><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">https://www.imooc.com/article/20057</a><br><a href="https://blog.csdn.net/howgod/article/details/87466148" target="_blank" rel="noopener">https://blog.csdn.net/howgod/article/details/87466148</a></p>
+<h5 id="第四阶段：ES6模块化"><a href="#第四阶段：ES6模块化" class="headerlink" title="第四阶段：ES6模块化"></a>第四阶段：ES6模块化</h5><p>&emsp;&emsp;ES6模块的设计思想是尽量的静态化，在编译时确定模块的依赖关系，以及输入和输出的变量，可以在编译时做静态优化，效率更高。在ES6中，使用import关键字引入模块，通过export关键字导出模块，但由于ES6目前的浏览器支持度原因，所以只能通过babel将不被支持的import编译为当前受到广泛支持的require。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> str = <span class="string">"test"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; str &#125;;</span><br><span class="line"><span class="keyword">export</span> &#123; add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; str &#125; <span class="keyword">from</span> <span class="string">"test.js"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; add &#125; <span class="keyword">from</span> <span class="string">"test.js"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意：import是静态执行，所以不能使用表达式和变量等运行时才能得到结果的语法结构，所以无法实现条件加载，<br>命令只能在模块的顶层，不能在代码块之中；<br>import命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口，但是如果输出的是对象，允许修改对象属性；<br>import命令具有提升效果，会提升到整个模块的头部，首先执行；<br>参考文献：<br><a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a><br><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">https://www.imooc.com/article/20057</a><br><a href="https://blog.csdn.net/howgod/article/details/87466148" target="_blank" rel="noopener">https://blog.csdn.net/howgod/article/details/87466148</a></p>
 
           
         
@@ -535,56 +1142,56 @@
           
             <h1 id="JS中的原型对象"><a href="#JS中的原型对象" class="headerlink" title="JS中的原型对象"></a>JS中的原型对象</h1><p>构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。<br>JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。  </p>
 <h3 id="构造函数的继承"><a href="#构造函数的继承" class="headerlink" title="构造函数的继承"></a>构造函数的继承</h3><ol>
-<li>将子构造函数的prototype属性指向一个父构造函数的实例   <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">Cat.prototype</span> = new Animal()<span class="comment">;     </span></span><br><span class="line"><span class="attr">Cat.prototype.constructor</span> = Cat<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<li>将子构造函数的prototype属性指向一个父构造函数的实例  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();     </span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p>注意：为了避免继承链的紊乱，在修改了prototype属性指向的原型对象后，须手动为新的原型对象加上constructor属性，指回原来的构造函数。   </p>
 <ol start="2">
-<li>直接继承父构造函数的prototype   <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">Cat.prototype</span> = Animal.prototype<span class="comment">;</span></span><br><span class="line"><span class="attr">Cat.prototype.constructor</span> = Cat<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<li>直接继承父构造函数的prototype  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.prototype = Animal.prototype;</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p>注意：与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反应到Animal.prototype。  </p>
 <ol start="3">
-<li>利用空对象作为中介   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span><span class="params">(Child, Parent)</span> </span>&#123;  </span><br><span class="line">	<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;;  </span><br><span class="line">	F.prototype = <span class="keyword">Parent</span>.prototype;  </span><br><span class="line">	Child.prototype = <span class="keyword">new</span> F();  </span><br><span class="line">	Child.prototype.constructor = Child;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>利用空对象作为中介  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;  </span><br><span class="line">	<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  </span><br><span class="line">	F.prototype = Parent.prototype;  </span><br><span class="line">	Child.prototype = <span class="keyword">new</span> F();  </span><br><span class="line">	Child.prototype.constructor = Child;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p>F是空对象，所以几乎不占内存，同时，修改Cat的prototype对象，不会影响到Animal的prototype对象。    </p>
 <ol start="4">
 <li><p>拷贝继承，将父构造函数的prototype对象中的属性，拷贝给子构造函数的prototype对象。  </p>
- <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span><span class="params">(Child, Parent)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> p = Parent.prototype;</span><br><span class="line">	<span class="keyword">var</span> c = Child.prototype;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123;</span><br><span class="line">		c[i] = p[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> p = Parent.prototype;</span><br><span class="line">	<span class="keyword">var</span> c = Child.prototype;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123;</span><br><span class="line">		c[i] = p[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>构造函数绑定，使用call或apply方法，将父对象的构造函数绑定在子对象上。  </p>
-<pre><code>
-function Cat(){
-    Animal.apply(this, arguments);
-}</code></pre><h3 id="非构造函数的继承"><a href="#非构造函数的继承" class="headerlink" title="非构造函数的继承"></a>非构造函数的继承</h3></li>
+<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>{
+    Animal.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);
+}</code></pre>
+<h3 id="非构造函数的继承"><a href="#非构造函数的继承" class="headerlink" title="非构造函数的继承"></a>非构造函数的继承</h3></li>
 <li><p>浅拷贝  </p>
-<pre><code>
-function extendCopy(p) {
-    var c = {};
-    for (var i in p) { 
+<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>) </span>{
+    <span class="keyword">var</span> c = {};
+    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) { 
         c[i] = p[i];
     }
-    return c;
-}</code></pre><p>把父对象的属性，全部拷贝给子对象。但是需要注意，如果父对象的属性为数组或对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被修改的可能性。    </p>
+    <span class="keyword">return</span> c;
+}</code></pre>
+<p>把父对象的属性，全部拷贝给子对象。但是需要注意，如果父对象的属性为数组或对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被修改的可能性。    </p>
 </li>
 <li><p>深拷贝，通过递归调用浅拷贝实现真正意义上数组和对象的拷贝。  </p>
-<pre><code>
-function deepCopy(p, c) {
-    var c = c || {};
-    for (var i in p) {
-        if (typeof p[i] === &apos;object&apos;) {
-            c[i] = (p[i].constructor === Array) ? [] : {};
+<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">p, c</span>) </span>{
+    <span class="keyword">var</span> c = c || {};
+    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) {
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> p[i] === <span class="string">'object'</span>) {
+            c[i] = (p[i].constructor === <span class="built_in">Array</span>) ? [] : {};
             deepCopy(p[i], c[i]);
-        } else {
+        } <span class="keyword">else</span> {
             c[i] = p[i];
         }
     }
-    return c;
-}</code></pre></li>
+    <span class="keyword">return</span> c;
+}</code></pre>
+</li>
 </ol>
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>原型链图示：<br><img src="/2019/08/03/prototype/prototype.png" alt="原型链">  </p>
 <ul>
@@ -1308,698 +1915,13 @@ Cache-Control: max-age=XXX（HTTP/1.1）</code></pre><ul>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/heightCollapse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/heightCollapse/" itemprop="url">高度塌陷</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T17:14:37+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="高度塌陷"><a href="#高度塌陷" class="headerlink" title="高度塌陷"></a>高度塌陷</h1><hr>
-<h3 id="什么是高度塌陷？"><a href="#什么是高度塌陷？" class="headerlink" title="什么是高度塌陷？"></a>什么是高度塌陷？</h3><p>&emsp;&emsp;在文档流中，父元素的高度默认是被子元素撑开的，但是当为子元素设置为浮动后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，此时，父元素下的所有元素都会向上移动，这样将导致页面布局混乱。</p>
-<h3 id="怎么解决高度塌陷？"><a href="#怎么解决高度塌陷？" class="headerlink" title="怎么解决高度塌陷？"></a>怎么解决高度塌陷？</h3><ol>
-<li>将父元素的高度写死<br>&emsp;&emsp;当父元素的高度写死后，父元素便具有固定的高度，但父元素的高度将不能自动适应子元素的高度，所以这种方案一般不推荐使用。</li>
-<li>添加一个空白div<br>&emsp;&emsp;可以直接在高度塌陷的父元素的最后，添加一个空白的div，由于这个div并没有浮动，所以他是可以撑开父元素的高度的，然后再对其清除浮动，这样可以通过这个空白的div来撑开父元素的高度，基本没有副作用，虽然使用这种方式可以解决问题，但是会在页面中添加多余的结构。</li>
-<li>使用伪元素<br>&emsp;&emsp;在父元素内容的最后添加一个伪元素实现前一种方案的功能，此方法不会造成代码结构上的冗余。</li>
-<li><strong>开启父元素的BFC</strong>    <ul>
-<li>设置元素浮动：可以撑开父元素，但是会导致父元素的宽度丢失，而且会导致下边的元素上移，容易引发布局问题；</li>
-<li>设置元素绝对定位；</li>
-<li>设置元素为inline-block，会导致宽度丢失；</li>
-<li>将元素的overflow属性设置为一个非visible的值（推荐使用）；  </li>
-</ul>
-</li>
-</ol>
-<p>注意：在IE6以下的浏览器不支持BFC，但有另一个隐含的属性hasLayout，作用和BFC类似，可通过开启该属性解决，推荐使用zoom：1，此样式只在IE中支持；</p>
-<h3 id="BFC简介"><a href="#BFC简介" class="headerlink" title="BFC简介"></a>BFC简介</h3><p>&emsp;&emsp;BFC（Block Formatting Context）,即块的格式化环境，根据W3C的标准，页面中的元素都有一个隐含的属性叫做BFC，该属性可以设置打开或者关闭，默认是关闭的。<br>开启BFC后元素会具有如下特性：  </p>
-<ol>
-<li>父元素的垂直外边距不会和子元素重叠；  </li>
-<li>开启BFC的元素不会被浮动元素所覆盖；  </li>
-<li>开启BFC的元素可以包含浮动的子元素；  </li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/html5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/10/html5/" itemprop="url">HTML5新特性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T00:00:00+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h1><hr>
-<h3 id="HTML十大新特性"><a href="#HTML十大新特性" class="headerlink" title="HTML十大新特性"></a>HTML十大新特性</h3><ol>
-<li>语义化标签<br>&emsp;&emsp;语义化标签使页面的内容结构化，易理解；</li>
-<li>增强型表单<br>&emsp;&emsp;提供了多种新的表单输入类型以及一些表单元素和表单属性，可以更好的对输入内容进行控制和验证；</li>
-<li>视频和音频<br>&emsp;&emsp;使用&lt;video&gt;元素提供播放视频文件的标准，使用&lt;audio&gt;元素提供播放音频文件的标准；</li>
-<li>Canvas绘图<br>&emsp;&emsp;使用JavaScript绘制图像，通过&lt;canvas&gt;元素呈现；</li>
-<li>SVG绘图<br>&emsp;&emsp;使用XML进行绘图，每个被绘制的图形均被视为对象；</li>
-<li>地理定位<br>&emsp;&emsp;Geolocation用于定位用户的位置；</li>
-<li>拖放API  </li>
-<li>Web Worker<br>&emsp;&emsp;当在HTML页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。而web worker是运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能。</li>
-<li>Web Storage<br>&emsp;&emsp;Web Storage的目的是为了克服由cookie带来的一些限制，当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。主要目的是提供一种在cookie之外存储会话数据的途径和一种存储大量可以跨会话存在的数据的机制。<br>&emsp;&emsp;Web Storage分为两种：sessionStorage 和localStorage ，sessionStorage将数据保存在session中，浏览器关闭即消失，而localStorage则一直将数据保存在客户端本地。</li>
-<li>WebSocket<br>&emsp;&emsp;WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/crossdomain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/05/crossdomain/" itemprop="url">跨域请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T00:00:00+08:00">
-                2019-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h1><hr>
-<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><p>同源策略：由Netscape提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略，同源是指协议、域名、端口相同。<br>跨域：当协议、域名、端口中任意一个不相同时，都算作不同域。不同域之间相互请求资源，即为跨域。<br>注意：同源策略是浏览器的行为，是为了保护本地数据不被JavaScript代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。 </p>
-<h3 id="解决跨域的几种方法"><a href="#解决跨域的几种方法" class="headerlink" title="解决跨域的几种方法"></a>解决跨域的几种方法</h3><ol>
-<li>通过jsonp跨域<br>&emsp;&emsp;通过在引入的js文件中加上回调函数，获取不同页面的数据，此方法需要服务器端页面的配合，另须注意jsonp只支持GET请求。</li>
-<li>通过修改document.domain跨域<br>&emsp;&emsp;对于不同域之间的框架iframe，虽然不能进行跨域访问，但是可以获取彼此的window对象，不可以使用window对象的属性和方法，相当于获取了一个无用的window对象，通过在两个页面中分别修改document.domain可以进行访问，但document.domain必须设置成自身或更高一级的父域，且主域必须相同。</li>
-<li>使用window.name进行跨域<br>&emsp;&emsp;窗口载入的所有页面共享一个window.name，每个页面都对window.name具有读写权限，window.name存在于一个窗口载入过的所有页面中，不会因新页面的载入而重置。</li>
-<li>使用H5新引进的window.postMessage跨域<br>&emsp;&emsp;window.postMessage(message,targetOrigin)方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，该方法的第一个参数message为要发送的消息；第二个参数targetOrigin用来限定接收消息的那个window对象所在的域，如果不想限定域，可以使用通配符 *，需要接收消息的window对象，可是通过监听自身的message事件来获取传过来的消息，消息内容储存在该事件对象的data属性中。</li>
-<li>通过CORS（cross-origin sharing）跨域<br>&emsp;&emsp;使用额外的 HTTP 头来告诉浏览器让运行在一个origin(domain)上的Web应用被准许访问来自不同源服务器上指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域HTTP请求。</li>
-<li>使用websocket跨域<br>&emsp;&emsp;WebSocket protocol是HTML5一种新的协议。它实现了浏览器与服务器全双工通信，同时允许跨域通讯，是server push技术的一种很好的实现。</li>
-<li>设置代理层<br>&emsp;&emsp;客户端发送请求时，不直接到服务器，而是先到代理的中间层，在代理层设置代理规则修改域名进行访问。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/variable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuaoin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sharing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/variable/" itemprop="url">JavaScript数据类型及判断</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JavaScript数据类型及判断"><a href="#JavaScript数据类型及判断" class="headerlink" title="JavaScript数据类型及判断"></a>JavaScript数据类型及判断</h1><hr>
-<h3 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h3><p>&emsp;&emsp;六大基本数据类型：NULL, Undefined, Boolean, String, Number, Symbol（ES6新增）。<br>&emsp;&emsp;三大引用类型：Object, Array, Function。</p>
-<h3 id="JS变量类型判断"><a href="#JS变量类型判断" class="headerlink" title="JS变量类型判断"></a>JS变量类型判断</h3><pre><code>let num = 123;
-let str = &apos;abc&apos;;
-let bool = true;
-let arr = [1,2,3];
-let json = {&quot;name&quot;: &quot;jack&quot;, &quot;age&quot;: 25};
-let und = undefined;
-let nul = null;
-let date = new Date();
-let reg = /^[a-z]$/;
-let error = new Error();
-let fun = console.log;
-let sym = Symbol(&apos;foo&apos;);</code></pre><ol>
-<li><p>使用typeof检测<br>&emsp;&emsp;typeof只能检测出string, number, boolean, function, undefined，其他类型的数据检测结果均为object，不能区分。</p>
-<pre><code>typeof num =&gt; &quot;number&quot;
-typeof str =&gt; &quot;string&quot;
-typeof boolean =&gt; &quot;boolean&quot;
-typeof arr =&gt; &quot;object&quot;
-typeof json =&gt; &quot;object&quot;
-typeof und =&gt; &quot;undefined&quot;
-typeof nul =&gt; &quot;object&quot;
-typeof date =&gt; &quot;object&quot;
-typeof reg =&gt; &quot;object&quot;
-typeof error =&gt; &quot;object&quot;
-typeof fun =&gt; &quot;function&quot;
-typeof sym =&gt; &quot;symbol&quot;</code></pre></li>
-<li><p>使用instanceof检测<br>&emsp;&emsp;通过判断参照对象的prototype属性所指向的对象是否在被检测对象的原型链上进行检测，此方法对null和undefined检测为object，因为js中没有这种全局类型，另外，此方法有一个弊端，对于number, string, boolean这三种类型，只有通过构造函数定义的才能被检测出，如let num = new Number(1)，而这种let num = 1则不能被检测出。</p>
-<pre><code>num instanceof Number =&gt; false
-str instanceof String =&gt; false
-bool instanceof Boolean =&gt; false
-arr instanceof Array =&gt; true
-json instanceof Object =&gt; true
-und instanceof Object =&gt; false
-nul instaceof Object =&gt; false
-date instanceof Object =&gt; true
-reg instanceof Object =&gt; true
-error instanceof Object =&gt; true
-fun instanceof Function =&gt; true
-sym instanceof Symbol =&gt; false </code></pre></li>
-<li><p>使用constructor检测<br>&emsp;&emsp;constructor是原型对象的属性指向构造函数，这种方式解决了instanceof的弊端，但对于undefined和null仍有缺陷，而且constructor指向的构造函数是可以被修改的。</p>
-<pre><code>num.constructor == Number =&gt; true
-str.constructor == String =&gt; true
-bool.constructor == Boolean =&gt; true
-arr.constructor == Array =&gt; true
-json.constructor == Object =&gt; true
-und.constructor == Undefined =&gt; true
-unl.constructor == Null =&gt; true
-date.constructor == Date =&gt; true
-reg.constructor == RegExp =&gt; true
-error.constructor == Error =&gt; true
-fun.constructor == Function =&gt; true
-sym.constructor == Symbol =&gt; true</code></pre></li>
-<li><p>使用Object.prototype.toString.call检测<br>&emsp;&emsp;通过取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于“[object Array]“的字符串作为结果（[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call，可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较即可，此方法可以检测出所有的变量类型。</p>
-<pre><code>Object.prototype.toString.call(num) =&gt; &quot;[object Number]&quot;
-Object.prototype.toString.call(str) =&gt; &quot;[object String]&quot;
-Object.prototype.toString.call(bool) =&gt; &quot;[object Boolean]&quot;
-Object.prototype.toString.call(arr) =&gt; &quot;[object Array]&quot;
-Object.prototype.toString.call(json) =&gt; &quot;[object Object]&quot;
-Object.prototype.toString.call(nul) =&gt; &quot;[object Null]&quot;
-Object.prototype.toString.call(und) =&gt; &quot;[object Undefined]&quot;
-Object.prototype.toString.call(date) =&gt; &quot;[object Date]&quot;
-Object.prototype.toString.call(reg) =&gt; &quot;[object RegExp]&quot;
-Object.prototype.toString.call(error) =&gt; &quot;[object Error]&quot;
-Object.prototype.toString.call(fun) =&gt; &quot;[object Function]&quot;
-Object.prototype.toString.call(sym) =&gt; &quot;[object Symbol]&quot;</code></pre></li>
-<li><p>使用jquery中的$.type检测<br>&emsp;&emsp;此方法是基于ES5的Object.prototype.toString.call进一步封装，可以检测出所有的变量类型。</p>
-<pre><code>$.type(num) =&gt; &quot;number&quot;
-$.type(str) =&gt; &quot;string&quot;
-$.type(bool) =&gt; &quot;boolean&quot;
-$.type(arr) =&gt; &quot;array&quot;
-$.type(json) =&gt; &quot;object&quot;
-$.type(und) =&gt; &quot;undefined&quot;
-$.type(nul) =&gt; &quot;null&quot;
-$.type(date) =&gt; &quot;date&quot;
-$.type(reg) =&gt; &quot;regexp&quot;
-$.type(error) =&gt; &quot;error&quot;
-$.type(fun) =&gt; &quot;function&quot;
-$.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2045,7 +1967,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2067,7 +1989,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2121,7 +2043,7 @@ $.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

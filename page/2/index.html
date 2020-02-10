@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -73,20 +73,16 @@
 
 
 
-<meta name="description" content="JS中的原型对象构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。   构">
-<meta name="keywords" content="JavaScript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JS中的原型对象">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/prototype/index.html">
+<meta name="description" content="Record and Share">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sharing">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Sharing">
-<meta property="og:description" content="JS中的原型对象构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。   构">
+<meta property="og:description" content="Record and Share">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/08/03/prototype/prototype.png">
-<meta property="og:updated_time" content="2020-02-10T03:27:09.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中的原型对象">
-<meta name="twitter:description" content="JS中的原型对象构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。   构">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/03/prototype/prototype.png">
+<meta name="twitter:title" content="Sharing">
+<meta name="twitter:description" content="Record and Share">
 
 
 
@@ -116,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/03/prototype/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
 
 
-  <title>JS中的原型对象 | Sharing</title>
+  <title>Sharing</title>
   
 
 
@@ -151,7 +147,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,9 +273,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -291,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/prototype/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/heightCollapse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuaoin">
@@ -308,7 +305,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS中的原型对象</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/heightCollapse/" itemprop="url">高度塌陷</a></h1>
         
 
         <div class="post-meta">
@@ -320,8 +319,324 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T22:51:54+08:00">
-                2019-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T17:14:37+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="高度塌陷"><a href="#高度塌陷" class="headerlink" title="高度塌陷"></a>高度塌陷</h1><hr>
+<h3 id="什么是高度塌陷？"><a href="#什么是高度塌陷？" class="headerlink" title="什么是高度塌陷？"></a>什么是高度塌陷？</h3><p>&emsp;&emsp;在文档流中，父元素的高度默认是被子元素撑开的，但是当为子元素设置为浮动后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，此时，父元素下的所有元素都会向上移动，这样将导致页面布局混乱。</p>
+<h3 id="怎么解决高度塌陷？"><a href="#怎么解决高度塌陷？" class="headerlink" title="怎么解决高度塌陷？"></a>怎么解决高度塌陷？</h3><ol>
+<li>将父元素的高度写死<br>&emsp;&emsp;当父元素的高度写死后，父元素便具有固定的高度，但父元素的高度将不能自动适应子元素的高度，所以这种方案一般不推荐使用。</li>
+<li>添加一个空白div<br>&emsp;&emsp;可以直接在高度塌陷的父元素的最后，添加一个空白的div，由于这个div并没有浮动，所以他是可以撑开父元素的高度的，然后再对其清除浮动，这样可以通过这个空白的div来撑开父元素的高度，基本没有副作用，虽然使用这种方式可以解决问题，但是会在页面中添加多余的结构。</li>
+<li>使用伪元素<br>&emsp;&emsp;在父元素内容的最后添加一个伪元素实现前一种方案的功能，此方法不会造成代码结构上的冗余。</li>
+<li><strong>开启父元素的BFC</strong>    <ul>
+<li>设置元素浮动：可以撑开父元素，但是会导致父元素的宽度丢失，而且会导致下边的元素上移，容易引发布局问题；</li>
+<li>设置元素绝对定位；</li>
+<li>设置元素为inline-block，会导致宽度丢失；</li>
+<li>将元素的overflow属性设置为一个非visible的值（推荐使用）；  </li>
+</ul>
+</li>
+</ol>
+<p>注意：在IE6以下的浏览器不支持BFC，但有另一个隐含的属性hasLayout，作用和BFC类似，可通过开启该属性解决，推荐使用zoom：1，此样式只在IE中支持；</p>
+<h3 id="BFC简介"><a href="#BFC简介" class="headerlink" title="BFC简介"></a>BFC简介</h3><p>&emsp;&emsp;BFC（Block Formatting Context）,即块的格式化环境，根据W3C的标准，页面中的元素都有一个隐含的属性叫做BFC，该属性可以设置打开或者关闭，默认是关闭的。<br>开启BFC后元素会具有如下特性：  </p>
+<ol>
+<li>父元素的垂直外边距不会和子元素重叠；  </li>
+<li>开启BFC的元素不会被浮动元素所覆盖；  </li>
+<li>开启BFC的元素可以包含浮动的子元素；  </li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/html5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/10/html5/" itemprop="url">HTML5新特性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T00:00:00+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h1><hr>
+<h3 id="HTML十大新特性"><a href="#HTML十大新特性" class="headerlink" title="HTML十大新特性"></a>HTML十大新特性</h3><ol>
+<li>语义化标签<br>&emsp;&emsp;语义化标签使页面的内容结构化，易理解；</li>
+<li>增强型表单<br>&emsp;&emsp;提供了多种新的表单输入类型以及一些表单元素和表单属性，可以更好的对输入内容进行控制和验证；</li>
+<li>视频和音频<br>&emsp;&emsp;使用&lt;video&gt;元素提供播放视频文件的标准，使用&lt;audio&gt;元素提供播放音频文件的标准；</li>
+<li>Canvas绘图<br>&emsp;&emsp;使用JavaScript绘制图像，通过&lt;canvas&gt;元素呈现；</li>
+<li>SVG绘图<br>&emsp;&emsp;使用XML进行绘图，每个被绘制的图形均被视为对象；</li>
+<li>地理定位<br>&emsp;&emsp;Geolocation用于定位用户的位置；</li>
+<li>拖放API  </li>
+<li>Web Worker<br>&emsp;&emsp;当在HTML页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。而web worker是运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能。</li>
+<li>Web Storage<br>&emsp;&emsp;Web Storage的目的是为了克服由cookie带来的一些限制，当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。主要目的是提供一种在cookie之外存储会话数据的途径和一种存储大量可以跨会话存在的数据的机制。<br>&emsp;&emsp;Web Storage分为两种：sessionStorage 和localStorage ，sessionStorage将数据保存在session中，浏览器关闭即消失，而localStorage则一直将数据保存在客户端本地。</li>
+<li>WebSocket<br>&emsp;&emsp;WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/crossdomain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/05/crossdomain/" itemprop="url">跨域请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T00:00:00+08:00">
+                2019-07-05
               </time>
             
 
@@ -362,10 +677,157 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h1><hr>
+<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><p>同源策略：由Netscape提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略，同源是指协议、域名、端口相同。<br>跨域：当协议、域名、端口中任意一个不相同时，都算作不同域。不同域之间相互请求资源，即为跨域。<br>注意：同源策略是浏览器的行为，是为了保护本地数据不被JavaScript代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。 </p>
+<h3 id="解决跨域的几种方法"><a href="#解决跨域的几种方法" class="headerlink" title="解决跨域的几种方法"></a>解决跨域的几种方法</h3><ol>
+<li>通过jsonp跨域<br>&emsp;&emsp;通过在引入的js文件中加上回调函数，获取不同页面的数据，此方法需要服务器端页面的配合，另须注意jsonp只支持GET请求。</li>
+<li>通过修改document.domain跨域<br>&emsp;&emsp;对于不同域之间的框架iframe，虽然不能进行跨域访问，但是可以获取彼此的window对象，不可以使用window对象的属性和方法，相当于获取了一个无用的window对象，通过在两个页面中分别修改document.domain可以进行访问，但document.domain必须设置成自身或更高一级的父域，且主域必须相同。</li>
+<li>使用window.name进行跨域<br>&emsp;&emsp;窗口载入的所有页面共享一个window.name，每个页面都对window.name具有读写权限，window.name存在于一个窗口载入过的所有页面中，不会因新页面的载入而重置。</li>
+<li>使用H5新引进的window.postMessage跨域<br>&emsp;&emsp;window.postMessage(message,targetOrigin)方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，该方法的第一个参数message为要发送的消息；第二个参数targetOrigin用来限定接收消息的那个window对象所在的域，如果不想限定域，可以使用通配符 *，需要接收消息的window对象，可是通过监听自身的message事件来获取传过来的消息，消息内容储存在该事件对象的data属性中。</li>
+<li>通过CORS（cross-origin sharing）跨域<br>&emsp;&emsp;使用额外的 HTTP 头来告诉浏览器让运行在一个origin(domain)上的Web应用被准许访问来自不同源服务器上指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域HTTP请求。</li>
+<li>使用websocket跨域<br>&emsp;&emsp;WebSocket protocol是HTML5一种新的协议。它实现了浏览器与服务器全双工通信，同时允许跨域通讯，是server push技术的一种很好的实现。</li>
+<li>设置代理层<br>&emsp;&emsp;客户端发送请求时，不直接到服务器，而是先到代理的中间层，在代理层设置代理规则修改域名进行访问。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/variable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/variable/" itemprop="url">JavaScript数据类型及判断</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
           
 
           
@@ -385,68 +847,91 @@
       
 
       
-        <h1 id="JS中的原型对象"><a href="#JS中的原型对象" class="headerlink" title="JS中的原型对象"></a>JS中的原型对象</h1><p>构造函数：为了解决从原型对象生成实例的问题，JavaScript提供了一个构造函数模式。构造函数其实是一个普通函数，但内部使用了this变量，对构造函数使用new运算符，可以生成实例对象，并且this变量会绑定在实例对象上。<br>JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象（原型对象），这个对象的所有属性和方法，都会被构造函数的实例继承。  </p>
-<h3 id="构造函数的继承"><a href="#构造函数的继承" class="headerlink" title="构造函数的继承"></a>构造函数的继承</h3><ol>
-<li>将子构造函数的prototype属性指向一个父构造函数的实例  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();     </span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure>
-
-</li>
+        
+          
+            <h1 id="JavaScript数据类型及判断"><a href="#JavaScript数据类型及判断" class="headerlink" title="JavaScript数据类型及判断"></a>JavaScript数据类型及判断</h1><hr>
+<h3 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h3><p>&emsp;&emsp;六大基本数据类型：NULL, Undefined, Boolean, String, Number, Symbol（ES6新增）。<br>&emsp;&emsp;三大引用类型：Object, Array, Function。</p>
+<h3 id="JS变量类型判断"><a href="#JS变量类型判断" class="headerlink" title="JS变量类型判断"></a>JS变量类型判断</h3><pre><code>let num = 123;
+let str = &apos;abc&apos;;
+let bool = true;
+let arr = [1,2,3];
+let json = {&quot;name&quot;: &quot;jack&quot;, &quot;age&quot;: 25};
+let und = undefined;
+let nul = null;
+let date = new Date();
+let reg = /^[a-z]$/;
+let error = new Error();
+let fun = console.log;
+let sym = Symbol(&apos;foo&apos;);</code></pre><ol>
+<li><p>使用typeof检测<br>&emsp;&emsp;typeof只能检测出string, number, boolean, function, undefined，其他类型的数据检测结果均为object，不能区分。</p>
+<pre><code>typeof num =&gt; &quot;number&quot;
+typeof str =&gt; &quot;string&quot;
+typeof boolean =&gt; &quot;boolean&quot;
+typeof arr =&gt; &quot;object&quot;
+typeof json =&gt; &quot;object&quot;
+typeof und =&gt; &quot;undefined&quot;
+typeof nul =&gt; &quot;object&quot;
+typeof date =&gt; &quot;object&quot;
+typeof reg =&gt; &quot;object&quot;
+typeof error =&gt; &quot;object&quot;
+typeof fun =&gt; &quot;function&quot;
+typeof sym =&gt; &quot;symbol&quot;</code></pre></li>
+<li><p>使用instanceof检测<br>&emsp;&emsp;通过判断参照对象的prototype属性所指向的对象是否在被检测对象的原型链上进行检测，此方法对null和undefined检测为object，因为js中没有这种全局类型，另外，此方法有一个弊端，对于number, string, boolean这三种类型，只有通过构造函数定义的才能被检测出，如let num = new Number(1)，而这种let num = 1则不能被检测出。</p>
+<pre><code>num instanceof Number =&gt; false
+str instanceof String =&gt; false
+bool instanceof Boolean =&gt; false
+arr instanceof Array =&gt; true
+json instanceof Object =&gt; true
+und instanceof Object =&gt; false
+nul instaceof Object =&gt; false
+date instanceof Object =&gt; true
+reg instanceof Object =&gt; true
+error instanceof Object =&gt; true
+fun instanceof Function =&gt; true
+sym instanceof Symbol =&gt; false </code></pre></li>
+<li><p>使用constructor检测<br>&emsp;&emsp;constructor是原型对象的属性指向构造函数，这种方式解决了instanceof的弊端，但对于undefined和null仍有缺陷，而且constructor指向的构造函数是可以被修改的。</p>
+<pre><code>num.constructor == Number =&gt; true
+str.constructor == String =&gt; true
+bool.constructor == Boolean =&gt; true
+arr.constructor == Array =&gt; true
+json.constructor == Object =&gt; true
+und.constructor == Undefined =&gt; true
+unl.constructor == Null =&gt; true
+date.constructor == Date =&gt; true
+reg.constructor == RegExp =&gt; true
+error.constructor == Error =&gt; true
+fun.constructor == Function =&gt; true
+sym.constructor == Symbol =&gt; true</code></pre></li>
+<li><p>使用Object.prototype.toString.call检测<br>&emsp;&emsp;通过取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于“[object Array]“的字符串作为结果（[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call，可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较即可，此方法可以检测出所有的变量类型。</p>
+<pre><code>Object.prototype.toString.call(num) =&gt; &quot;[object Number]&quot;
+Object.prototype.toString.call(str) =&gt; &quot;[object String]&quot;
+Object.prototype.toString.call(bool) =&gt; &quot;[object Boolean]&quot;
+Object.prototype.toString.call(arr) =&gt; &quot;[object Array]&quot;
+Object.prototype.toString.call(json) =&gt; &quot;[object Object]&quot;
+Object.prototype.toString.call(nul) =&gt; &quot;[object Null]&quot;
+Object.prototype.toString.call(und) =&gt; &quot;[object Undefined]&quot;
+Object.prototype.toString.call(date) =&gt; &quot;[object Date]&quot;
+Object.prototype.toString.call(reg) =&gt; &quot;[object RegExp]&quot;
+Object.prototype.toString.call(error) =&gt; &quot;[object Error]&quot;
+Object.prototype.toString.call(fun) =&gt; &quot;[object Function]&quot;
+Object.prototype.toString.call(sym) =&gt; &quot;[object Symbol]&quot;</code></pre></li>
+<li><p>使用jquery中的$.type检测<br>&emsp;&emsp;此方法是基于ES5的Object.prototype.toString.call进一步封装，可以检测出所有的变量类型。</p>
+<pre><code>$.type(num) =&gt; &quot;number&quot;
+$.type(str) =&gt; &quot;string&quot;
+$.type(bool) =&gt; &quot;boolean&quot;
+$.type(arr) =&gt; &quot;array&quot;
+$.type(json) =&gt; &quot;object&quot;
+$.type(und) =&gt; &quot;undefined&quot;
+$.type(nul) =&gt; &quot;null&quot;
+$.type(date) =&gt; &quot;date&quot;
+$.type(reg) =&gt; &quot;regexp&quot;
+$.type(error) =&gt; &quot;error&quot;
+$.type(fun) =&gt; &quot;function&quot;
+$.type(sym) =&gt; &quot;symbol&quot;</code></pre></li>
 </ol>
-<p>注意：为了避免继承链的紊乱，在修改了prototype属性指向的原型对象后，须手动为新的原型对象加上constructor属性，指回原来的构造函数。   </p>
-<ol start="2">
-<li>直接继承父构造函数的prototype  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat.prototype = Animal.prototype;</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>注意：与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反应到Animal.prototype。  </p>
-<ol start="3">
-<li>利用空对象作为中介  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;  </span><br><span class="line">	<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  </span><br><span class="line">	F.prototype = Parent.prototype;  </span><br><span class="line">	Child.prototype = <span class="keyword">new</span> F();  </span><br><span class="line">	Child.prototype.constructor = Child;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>F是空对象，所以几乎不占内存，同时，修改Cat的prototype对象，不会影响到Animal的prototype对象。    </p>
-<ol start="4">
-<li><p>拷贝继承，将父构造函数的prototype对象中的属性，拷贝给子构造函数的prototype对象。  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> p = Parent.prototype;</span><br><span class="line">	<span class="keyword">var</span> c = Child.prototype;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123;</span><br><span class="line">		c[i] = p[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>构造函数绑定，使用call或apply方法，将父对象的构造函数绑定在子对象上。  </p>
-<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>{
-    Animal.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);
-}</code></pre>
-<h3 id="非构造函数的继承"><a href="#非构造函数的继承" class="headerlink" title="非构造函数的继承"></a>非构造函数的继承</h3></li>
-<li><p>浅拷贝  </p>
-<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>) </span>{
-    <span class="keyword">var</span> c = {};
-    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) { 
-        c[i] = p[i];
-    }
-    <span class="keyword">return</span> c;
-}</code></pre>
-<p>把父对象的属性，全部拷贝给子对象。但是需要注意，如果父对象的属性为数组或对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被修改的可能性。    </p>
-</li>
-<li><p>深拷贝，通过递归调用浅拷贝实现真正意义上数组和对象的拷贝。  </p>
-<pre><code class="JavaScript"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">p, c</span>) </span>{
-    <span class="keyword">var</span> c = c || {};
-    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) {
-        <span class="keyword">if</span> (<span class="keyword">typeof</span> p[i] === <span class="string">'object'</span>) {
-            c[i] = (p[i].constructor === <span class="built_in">Array</span>) ? [] : {};
-            deepCopy(p[i], c[i]);
-        } <span class="keyword">else</span> {
-            c[i] = p[i];
-        }
-    }
-    <span class="keyword">return</span> c;
-}</code></pre>
-</li>
-</ol>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>原型链图示：<br><img src="/2019/08/03/prototype/prototype.png" alt="原型链">  </p>
-<ul>
-<li>所有对象都具有_proto_属性，指向生成该对象的构造函数的原型对象，Function是一个特殊的对象；  </li>
-<li>prototype属性只有构造函数拥有，指向构造函数的原型对象；  </li>
-<li>原型对象拥有constructor属性，指向构造函数；  </li>
-<li>原型对象的用途是包含所有实例对象共有的属性和方法；  </li>
-</ul>
-<p><a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">参考文献：http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
-
+          
+        
       
     </div>
     
@@ -461,40 +946,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/03/imageformat/" rel="next" title="图片格式">
-                <i class="fa fa-chevron-left"></i> 图片格式
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/05/module/" rel="prev" title="前端模块化">
-                前端模块化 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -504,17 +963,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
-      
-    </div>
-  </div>
 
 
           </div>
@@ -522,10 +978,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -546,17 +998,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -628,22 +1071,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中的原型对象"><span class="nav-number">1.</span> <span class="nav-text">JS中的原型对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数的继承"><span class="nav-number">1.0.1.</span> <span class="nav-text">构造函数的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非构造函数的继承"><span class="nav-number">1.0.2.</span> <span class="nav-text">非构造函数的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">1.0.3.</span> <span class="nav-text">原型链</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -794,10 +1221,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="权限,">
 
 
 
@@ -73,16 +73,18 @@
 
 
 
-<meta name="description" content="Record and Share">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sharing">
-<meta property="og:url" content="http://yoursite.com/categories/HTML/index.html">
+<meta name="description" content="常用登录鉴权方式 Basic鉴权&amp;emsp;&amp;emsp;HTTP/1.0定义的认证方式，一般用于内部局域网系统FTP登录，使用较少。鉴权流程：&amp;emsp;&amp;emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，包含Basic（认证方式）与realm（安全域）两个值。&amp;ems">
+<meta name="keywords" content="权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用登录鉴权方式">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/authorization/index.html">
 <meta property="og:site_name" content="Sharing">
-<meta property="og:description" content="Record and Share">
+<meta property="og:description" content="常用登录鉴权方式 Basic鉴权&amp;emsp;&amp;emsp;HTTP/1.0定义的认证方式，一般用于内部局域网系统FTP登录，使用较少。鉴权流程：&amp;emsp;&amp;emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，包含Basic（认证方式）与realm（安全域）两个值。&amp;ems">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-10T03:23:34.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sharing">
-<meta name="twitter:description" content="Record and Share">
+<meta name="twitter:title" content="常用登录鉴权方式">
+<meta name="twitter:description" content="常用登录鉴权方式 Basic鉴权&amp;emsp;&amp;emsp;HTTP/1.0定义的认证方式，一般用于内部局域网系统FTP登录，使用较少。鉴权流程：&amp;emsp;&amp;emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，包含Basic（认证方式）与realm（安全域）两个值。&amp;ems">
 
 
 
@@ -112,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/HTML/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/10/authorization/">
 
 
 
 
 
-  <title>分类: HTML | Sharing</title>
+  <title>常用登录鉴权方式 | Sharing</title>
   
 
 
@@ -147,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,79 +275,198 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>HTML<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/authorization/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuaoin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sharing">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/03/imageformat/" itemprop="url">
-              
-                <span itemprop="name">图片格式</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">常用登录鉴权方式</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-03T12:05:16+08:00" content="2019-08-03">
-          08-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T11:13:05+08:00">
+                2020-02-10
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="常用登录鉴权方式"><a href="#常用登录鉴权方式" class="headerlink" title="常用登录鉴权方式"></a>常用登录鉴权方式</h1><hr>
+<h3 id="Basic鉴权"><a href="#Basic鉴权" class="headerlink" title="Basic鉴权"></a>Basic鉴权</h3><p>&emsp;&emsp;HTTP/1.0定义的认证方式，一般用于内部局域网系统FTP登录，使用较少。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，包含Basic（认证方式）与realm（安全域）两个值。<br>&emsp;&emsp;2. 客户端接收到401状态码后，为了通过认证，需要将用户名及密码发送给服务器，发送的形式为用户名和密码组成的字符串，中间以冒号连接，再经过Base64编码处理。（此过程一般浏览器会进行处理，触发一个自带的弹窗，提示输入用户名和密码进行验证）。<br>&emsp;&emsp;3. 服务端接收到包含Authorization请求头字段的请求，对认证的信息进行校验，通过验证后，返回对应的资源响应。</p>
+<pre><code>WWW-Authenticate: Basic realm=&quot;&quot;     
+Authorization: Basic Base64(username:password)  </code></pre><h3 id="Digest鉴权"><a href="#Digest鉴权" class="headerlink" title="Digest鉴权"></a>Digest鉴权</h3><p>&emsp;&emsp;HTTP/1.1新增的认证方式，弥补了Basic认证直接发送明文密码的缺点，改用质询响应方式替代实现。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端向服务端发送请求，服务端检查请求头中是否包含Authorization字段，若没有则返回401状态码，并在响应头附加一个字段WWW-Authenticate，此字段必须包含realm和nonce两个值，客户端依赖这两个值进行认证。此外，有一些附加值可用于限制。<br>&emsp;&emsp;2. 客户端接收到401状态码后，返回包含认证必须的首部字段Authorization信息。首部字段Authorization内必须包含 username、realm、nonce、uri 和response的字段信息。其中，realm 和nonce为之前从服务器接收到的响应中的值。<br>&emsp;&emsp;3. 服务端接收到包含Authorization请求头字段的请求，对认证的信息进行校验，通过验证后，返回对应的资源响应。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WWW-Authenticate: Digest realm=<span class="string">"Digest"</span>, nonce=<span class="string">""</span>     </span><br><span class="line">Authorization: Digest username=<span class="string">""</span>, realm=<span class="string">""</span>, nonce=<span class="string">""</span>, uri=<span class="string">""</span>, response=, qop=auth, nc=<span class="number">00000001</span>, cnonce=<span class="string">""</span></span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/10/html5/" itemprop="url">
-              
-                <span itemprop="name">HTML5新特性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-10T00:00:00+08:00" content="2019-07-10">
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p><strong>The WWW-Authentaicate Response Header：</strong><br>realm: 域值，是一个可选参数，应至少包含主机名，代表一个授权范围。<br>nonce: 服务端产生的随机数，用于增加验证信息的复杂性。<br>qop-options: 质量保护，可选参数，默认值为auth，用于标识认证的程度，auth-int包含了完整性校验。<br>stale: nonce过期标志，不用于初始校验。<br>algorithm: 摘要算法。<br><strong>The Authorization Request Header</strong><br>username: 用户名。<br>digest-uri: 请求的URI。<br>qop: qop-options中的可选值，表示选择的质量保护类型。<br>cnonce: 由客户端产生的随机数，如果指定了qop值，则必须设定此值。<br>response: 32位16进制字符串，包含加密后的用户信息。<br>nc: 8位16进制数，标记请求的次数，结合nonce预防重放攻击。</p>
+<h3 id="session-cookie鉴权"><a href="#session-cookie鉴权" class="headerlink" title="session-cookie鉴权"></a>session-cookie鉴权</h3><p>&emsp;&emsp;利用服务器端的session和浏览器端的cookie来实现认证。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 服务端在接受客户端首次访问时在服务端创建session，然后将session保存在内存或redis中，给session生成一个唯一的标识字符串sessionId，将其加入响应头。<br>&emsp;&emsp;2. 客户端收到响应后进行解析，将sessionId保存在cookie中，在下次请求时请求头中会带上该域名下的cookie信息。<br>&emsp;&emsp;3. 服务端解析请求头cookie中的sessionId，然后根据这个sessionId去匹配保存的客户端session，判断是否合法。</p>
+<h3 id="Token鉴权"><a href="#Token鉴权" class="headerlink" title="Token鉴权"></a>Token鉴权</h3><p><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 客户端使用用户名和密码发起登录请求。<br>&emsp;&emsp;2. 服务端收到请求，验证用户名与密码。<br>&emsp;&emsp;3. 验证成功后，服务端签发一个Token，返回给客户端。<br>&emsp;&emsp;4. 客户端收到Token后进行存储，可放在cookie或者Local Storage中。<br>&emsp;&emsp;5. 客户端每次向服务端请求资源的时候带着服务端签发的Token。<br>&emsp;&emsp;6. 服务端收到请求，然后去验证客户端请求中携带的Token，验证成功则向客户端返回请求的数据。  </p>
+<h3 id="oAuth鉴权"><a href="#oAuth鉴权" class="headerlink" title="oAuth鉴权"></a>oAuth鉴权</h3><p> &emsp;&emsp;OAuth（开放授权）是一个开放标准，允许用户授权第三方网站访问它们存储在其它服务提供者上的信息，而不需要将用户名和密码提供给第三方网站或分享它们数据的所有内容，为了保护用户数据的安全和隐私，第三方网站访问用户数据前都需要显式的向用户征求授权。<br><strong>鉴权流程：</strong><br>&emsp;&emsp;1. 向用户请求授权，通过登录网站放置的第三方登录入口点击登录，由第三方授权服务引导进入第三方登录授权页面。<br>&emsp;&emsp;2. 当用户点击授权并登录后，授权服务器会返回一个用户凭证。<br>&emsp;&emsp;3. 第三方应用后台通过第二步的凭证向授权服务器请求Access Token。<br>&emsp;&emsp;4. 授权服务器同意授权后，返回一个资源访问的凭证Access Token。<br>&emsp;&emsp;5. 第三方应用通过第四步返回的Access Token登录网站请求资源。<br>&emsp;&emsp;6. 登录网站验证通过后，返回对应的资源。 </p>
+<h3 id="为什么通过登录后每次请求仍需要携带鉴权信息？"><a href="#为什么通过登录后每次请求仍需要携带鉴权信息？" class="headerlink" title="为什么通过登录后每次请求仍需要携带鉴权信息？"></a>为什么通过登录后每次请求仍需要携带鉴权信息？</h3><ol>
+<li>HTTP协议是无状态的，服务器不会保存会话信息，因此需要一种机制来判断用户是否登录过，对每一次HTTP请求进行验证。</li>
+<li>防止用户跳过登录页面，直接访问内部页面。</li>
+</ol>
+<p>参考文献：<a href="http://www.faqs.org/rfcs/rfc2617.html" target="_blank" rel="noopener">http://www.faqs.org/rfcs/rfc2617.html</a><br>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="https://blog.csdn.net/enweitech/article/details/89468297" target="_blank" rel="noopener">https://blog.csdn.net/enweitech/article/details/89468297</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/权限/" rel="tag"># 权限</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/10/attack/" rel="next" title="常见的攻击及防御">
+                <i class="fa fa-chevron-left"></i> 常见的攻击及防御
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/10/accessControl/" rel="prev" title="前端权限控制">
+                前端权限控制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -353,6 +474,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -373,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -446,6 +580,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用登录鉴权方式"><span class="nav-number">1.</span> <span class="nav-text">常用登录鉴权方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic鉴权"><span class="nav-number">1.0.1.</span> <span class="nav-text">Basic鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digest鉴权"><span class="nav-number">1.0.2.</span> <span class="nav-text">Digest鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-cookie鉴权"><span class="nav-number">1.0.3.</span> <span class="nav-text">session-cookie鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Token鉴权"><span class="nav-number">1.0.4.</span> <span class="nav-text">Token鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oAuth鉴权"><span class="nav-number">1.0.5.</span> <span class="nav-text">oAuth鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么通过登录后每次请求仍需要携带鉴权信息？"><span class="nav-number">1.0.6.</span> <span class="nav-text">为什么通过登录后每次请求仍需要携带鉴权信息？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -596,6 +746,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
